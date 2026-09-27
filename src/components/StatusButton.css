@@ -1,0 +1,45 @@
+.status-button {
+  position: relative;
+  height: 90%;
+  aspect-ratio: 3 / 1;
+  padding: 0 1.25rem;
+
+  background-color: #f0f0f0;
+  border-radius: 6rem;
+  display: flex;
+  align-items: center;
+
+  p {
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  &::before {
+    content: "3";
+    position: absolute;
+    top: 50%;
+    right: 1.5%;
+    transform: translateY(-50%);
+    height: 90%;
+    aspect-ratio: 1 / 1;
+    z-index: 1;
+    background-color: var(--clr-main);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  &:nth-child(3) {
+    background-color: var(--clr-accent);
+
+    &::before {
+      background-color: var(--clr-major);
+    }
+  }
+}

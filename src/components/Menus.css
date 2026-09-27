@@ -1,0 +1,46 @@
+.menus-container {
+  position: fixed;
+
+  bottom: 2%;
+  right: 50%;
+  transform: translate(50%, 2%);
+  height: 8vh;
+  border-radius: 6rem;
+  background-color: #2d2d2d;
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
+  padding: 0.25rem;
+}
+
+.menu-item,
+.menu-active-btn {
+  background-color: #3f3f3f;
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    z-index: 2;
+    mix-blend-mode: exclusion;
+  }
+}
+
+.menu-item {
+  position: relative;
+}
+
+.menu-active-btn {
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  background-color: var(--clr-main);
+  z-index: 1;
+}

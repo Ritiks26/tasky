@@ -1,0 +1,83 @@
+.settings-container {
+  height: 100dvh;
+  width: 100%;
+  background-color: #0d0d0d;
+
+  color: var(--clr-primary);
+  font-family: var(--font-main);
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.setting-profile {
+  height: 8vh;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.profile-picture {
+  height: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+
+  img {
+    padding: 0.125rem;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+}
+
+.user-detail {
+  line-height: 1.75;
+
+  .user-name {
+    font-weight: 500;
+  }
+
+  .edit-profile {
+    font-size: 0.85rem;
+    color: var(--clr-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    p {
+      font-weight: 400;
+    }
+
+    svg {
+      margin-top: 0.125rem;
+      rotate: -90deg;
+    }
+  }
+}
+
+.settings-other {
+  margin-top: 2rem;
+}
+
+.setting-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 1rem;
+  margin-block: 1rem;
+}
+
+.setting-left-section {
+  display: flex;
+  gap: 1rem;
+}
+
+.setting-right-section {
+  svg {
+    rotate: -90deg;
+  }
+}

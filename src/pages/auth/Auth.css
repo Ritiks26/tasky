@@ -1,0 +1,166 @@
+.login-container {
+  height: 100dvh;
+  width: 100%;
+  background-color: var(--clr-dark);
+  color: #f0f0f0;
+
+  font-family: var(--font-main);
+  padding: 2rem 1rem 1rem 1rem;
+
+  h1 {
+    font-size: 1.75rem;
+  }
+}
+
+.login-input-container,
+.signup-input-container {
+  margin-top: 1.75rem;
+  width: 100%;
+  color: #fff;
+
+  label {
+    font-size: 0.9rem;
+  }
+
+  input {
+    height: 6vh;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+    border: 1px solid rgb(83, 82, 82);
+    margin-block: 0.5rem;
+    background-color: transparent;
+    color: #b2b2b2;
+
+    &:focus {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: #b2b2b2;
+    }
+  }
+
+  .password-container {
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    svg {
+      position: absolute;
+      right: 3%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+
+  .email,
+  .password {
+    margin-top: 0.75rem;
+  }
+}
+
+.login-button,
+.signup-button {
+  height: 6vh;
+  width: 100%;
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+
+  button {
+    height: 100%;
+    width: 100%;
+    border-radius: inherit;
+    border: none;
+    font-size: 1rem;
+    font-weight: 400;
+
+    color: rgb(30, 30, 30);
+  }
+}
+
+.new-user {
+  margin: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5vh;
+  width: 100%;
+  p {
+    margin-inline: 0.5rem;
+    font-size: 0.8rem;
+    color: #f0f0f0;
+  }
+
+  hr {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid rgb(82, 82, 82);
+  }
+}
+
+.register-user,
+.registered-user {
+  p {
+    font-size: 0.8rem;
+
+    span {
+      font-weight: 500;
+      text-decoration: underline;
+      font-size: 0.85rem;
+      color: #cbd87d;
+    }
+  }
+}
+
+.login-via,
+.signup-via {
+  margin-top: 2rem;
+  height: 6.5vh;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid rgb(82, 82, 82);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .login-via-google,
+  .signup-via-google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    svg {
+      position: absolute;
+      left: 5%;
+    }
+    p {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+  }
+}
+
+/**Singup**/
+
+.signup-container {
+  height: 100dvh;
+  width: 100%;
+  color: #f0f0f0;
+  font-family: var(--font-main);
+  background-color: var(--clr-dark);
+
+  padding: 2rem 1rem 1rem 1rem;
+
+  h1 {
+    font-size: 1.75rem;
+  }
+}
+
+.registered-user {
+  margin-top: 2rem;
+  text-align: center;
+}

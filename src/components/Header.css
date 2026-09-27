@@ -1,0 +1,55 @@
+header {
+  height: 10dvh;
+  width: 100%;
+  padding: 0 1rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--clr-main);
+  z-index: 99;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.user-profile,
+.right-section-header {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+.right-section-header {
+  justify-content: end;
+}
+
+.profile-wrapper {
+  height: 70%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.right-section-header {
+  gap: 0.75rem;
+}
+
+.add-tasks,
+.notification-section {
+  height: 70%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--clr-gray);
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notification-section {
+  background-color: #e8e5f8;
+}
