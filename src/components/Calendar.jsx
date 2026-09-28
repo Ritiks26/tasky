@@ -88,11 +88,12 @@ export function Calendar() {
       <div className="calendar-dates-new">
         {days.map((day) => {
           const isCurrentMonth = isSameMonth(day, currentMonth);
-          const today = isToday(day);
+          const today = isToday(day) && isCurrentMonth;
+          console.log(today);
 
           return (
             <div
-              key={day}
+              key={day.toString()}
               className={`dates-new ${!isCurrentMonth ? "empty" : ""} ${today ? "today" : ""}`}
             >
               {isCurrentMonth ? format(day, "d") : ""}
