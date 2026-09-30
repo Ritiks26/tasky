@@ -1,11 +1,14 @@
-import { easeOut, motion } from "motion/react";
-import { useAnimation } from "motion/react";
+import { easeOut, motion, useAnimation } from "motion/react";
 import { useState, useEffect, useRef } from "react";
 import "./AddTask.css";
 
 const priorityTask = ["Low", "Medium", "High"];
 
-export function AddTask({ isAddTaskOpen }) {
+export function AddTask({
+  isAddTaskOpen,
+  isDatePickerOpen,
+  setIsDatePickerOpen,
+}) {
   const [taskPriority, setTaskPriority] = useState("Low");
   const [sliderWrapperWidth, setSliderWrapperWidth] = useState(0);
   const sliderWrapperRef = useRef(null);
@@ -29,8 +32,11 @@ export function AddTask({ isAddTaskOpen }) {
         <div className="input-container">
           {" "}
           <input type="text" placeholder=" " />
-          <label htmlFor="email">Add Task</label>
-          <div className="date-picker">
+          <label htmlFor="text">Add Task</label>
+          <div
+            className="date-picker"
+            onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
+          >
             {" "}
             <svg
               width="20"

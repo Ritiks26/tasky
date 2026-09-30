@@ -8,12 +8,14 @@ import { Home } from "./pages/home/Home";
 import { Task } from "./pages/Task/Task";
 import { CalendarDates } from "./pages/calendar/CalendarDates";
 import { Setting } from "./pages/setting/Setting";
-import "./App.css";
 import { Signup } from "./pages/auth/Signup";
+import { DatePicker } from "./components/DatePicker";
+import "./App.css";
 
 function App() {
   const location = useLocation();
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
   const isSettings = !["/", "/tasks", "/calendar"].includes(location.pathname);
 
@@ -23,6 +25,12 @@ function App() {
       <AddTask
         isAddTaskOpen={isAddTaskOpen}
         setIsAddTaskOpen={setIsAddTaskOpen}
+        isDatePickerOpen={isDatePickerOpen}
+        setIsDatePickerOpen={setIsDatePickerOpen}
+      />
+      <DatePicker
+        isDatePickerOpen={isDatePickerOpen}
+        setIsDatePickerOpen={setIsDatePickerOpen}
       />
       <AnimatePresence mode="wait">
         <motion.div
