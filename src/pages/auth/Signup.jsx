@@ -1,8 +1,41 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 import "./Auth.css";
 
 export function Signup() {
   const navigation = useNavigate();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/signup`,
+        formData,
+      );
+      console.log("signup done", res.data);
+      navigation("/login");
+    } catch (err) {
+      const message = err.response?.data?.message || "something went wrong";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="signup-container">
       <h1>Get your free account</h1>
@@ -43,21 +76,44 @@ export function Signup() {
         <hr />
       </div>
 
-      <form className="signup-input-container">
+      {error && <p className="error-message">{error}</p>}
+
+      <form className="signup-input-container" onSubmit={handleSubmit}>
         <div className="name">
           <label htmlFor="name">Name</label>
-          <input type="text" placeholder="Enter your name" required />
+          <input
+            type="text"
+            name="name"
+            placeholder="Enter your name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
         </div>
 
         <div className="email">
           <label>Email</label>
-          <input type="email" placeholder="hello@company.com" required />
+          <input
+            type="email"
+            name="email"
+            placeholder="hello@company.com"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
         </div>
 
         <div className="password">
           <label>Password</label>
           <div className="password-container">
-            <input type="password" placeholder="Create a password" required />
+            <input
+              type="password"
+              name="password"
+              placeholder="Create a password"
+              value={formData.password}
+              onChange={handleChange}
+              required
+            />
 
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +131,9 @@ export function Signup() {
         </div>
 
         <div className="signup-button">
-          <button type="submit">Continue</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Creating Account..." : "Continue"}
+          </button>
         </div>
       </form>
 

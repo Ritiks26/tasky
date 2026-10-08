@@ -1,9 +1,15 @@
 import { format } from "date-fns";
+import { useState } from "react";
 import { Calendar } from "../../components/Calendar";
+import { AddTask } from "../../components/AddTask";
+import { DatePicker } from "../../components/DatePicker";
 import "./CalendarDates.css";
 
-export function CalendarDates({ isAddTaskOpen, setIsAddTaskOpen }) {
+export function CalendarDates() {
   const currentDate = new Date();
+  const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
+  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState(null);
 
   return (
     <div className="calendar-container">
@@ -66,6 +72,20 @@ export function CalendarDates({ isAddTaskOpen, setIsAddTaskOpen }) {
         </div>
       </div>
       <Calendar />
+      <AddTask
+        isAddTaskOpen={isAddTaskOpen}
+        setIsAddTaskOpen={setIsAddTaskOpen}
+        isDatePickerOpen={isDatePickerOpen}
+        setIsDatePickerOpen={setIsDatePickerOpen}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
+      <DatePicker
+        isDatePickerOpen={isDatePickerOpen}
+        setIsDatePickerOpen={setIsDatePickerOpen}
+        selectedDate={selectedDate}
+        setSelectedDate={setSelectedDate}
+      />
     </div>
   );
 }

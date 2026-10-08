@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "./Setting.css";
 
 const setting = [
@@ -95,6 +96,12 @@ const setting = [
 ];
 
 export function Setting() {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  };
   return (
     <div className="settings-container">
       <div className="setting-profile">
@@ -177,7 +184,7 @@ export function Setting() {
           />
         </svg>
 
-        <p>Log out</p>
+        <p onClick={handleLogout}>Log out</p>
       </div>
     </div>
   );

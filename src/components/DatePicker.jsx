@@ -14,9 +14,13 @@ import { useState } from "react";
 import { motion } from "motion/react";
 import "./DatePicker.css";
 
-export function DatePicker({ isDatePickerOpen, setIsDatePickerOpen }) {
+export function DatePicker({
+  isDatePickerOpen,
+  setIsDatePickerOpen,
+  selectedDate,
+  setSelectedDate,
+}) {
   const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [selectedDate, setSelectedDate] = useState(null);
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
 

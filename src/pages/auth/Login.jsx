@@ -1,18 +1,61 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import "./Auth.css";
 
 export function Login() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const navigation = useNavigate();
+
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+        formData,
+      );
+      console.log("login done", res.data);
+      localStorage.setItem("token", res.data.token);
+      navigation("/");
+    } catch (err) {
+      const message = err.response?.data?.message || "something went wrong";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   return (
     <div className="login-container">
       <h1>Log in to Tasky</h1>
 
-      <form className="login-input-container">
+      {error && <p className="error-message">{error}</p>}
+
+      <form className="login-input-container" onSubmit={handleSubmit}>
         <div className="email">
           <label>Email</label>
-          <input type="email" placeholder="hello@company.com" required />
+          <input
+            type="email"
+            name="email"
+            placeholder="hello@company.com"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
         </div>
 
         <div className="password">
@@ -20,7 +63,10 @@ export function Login() {
           <div className="password-container">
             <input
               type={isPasswordVisible ? "text" : "password"}
+              name="password"
               placeholder="Your password"
+              value={formData.password}
+              onChange={handleChange}
               required
             />
 
@@ -67,7 +113,9 @@ export function Login() {
         </p>
 
         <div className="login-button">
-          <button type="submit">Login</button>
+          <button type="submit" disabled={loading}>
+            {loading ? "Logging in..." : "Login"}
+          </button>
         </div>
       </form>
 

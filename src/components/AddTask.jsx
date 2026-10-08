@@ -1,16 +1,22 @@
 import { easeOut, motion, useAnimation } from "motion/react";
 import { useState, useEffect, useRef } from "react";
 import "./AddTask.css";
+import axios from "axios";
 
 const priorityTask = ["Low", "Medium", "High"];
 
 export function AddTask({
+  setIsAddTaskOpen,
   isAddTaskOpen,
   isDatePickerOpen,
   setIsDatePickerOpen,
+  selectedDate,
+  setSelectedDate,
 }) {
+  const [taskTitle, setTaskTitle] = useState("");
   const [taskPriority, setTaskPriority] = useState("Low");
   const [sliderWrapperWidth, setSliderWrapperWidth] = useState(0);
+  const [loading, setLoading] = useState(false);
   const sliderWrapperRef = useRef(null);
   const controls = useAnimation();
 
@@ -20,6 +26,36 @@ export function AddTask({
       setSliderWrapperWidth(wrapperWidth);
     }
   }, []);
+
+  const handleAddTask = async () => {
+    if (!taskTitle.trim()) return;
+
+    setLoading(true);
+
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.post(
+        `${import.meta.env.VITE_API_URL}/api/todos`,
+        {
+          title: taskTitle,
+          priority: taskPriority.toLowerCase(),
+          dueDate: selectedDate ? selectedDate.toISOString() : null,
+        },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        },
+      );
+
+      console.log("task added", res.data);
+      setTaskTitle("");
+      setTaskPriority("Low");
+      setSelectedDate(null);
+    } catch (err) {
+      console.log(err.response?.data?.message || "something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   return (
     <motion.div
@@ -31,7 +67,12 @@ export function AddTask({
       <div className="add-task-container">
         <div className="input-container">
           {" "}
-          <input type="text" placeholder=" " />
+          <input
+            type="text"
+            placeholder=" "
+            value={taskTitle}
+            onChange={(e) => setTaskTitle(e.target.value)}
+          />
           <label htmlFor="text">Add Task</label>
           <div
             className="date-picker"
@@ -90,9 +131,23 @@ export function AddTask({
             </div>
           ))}
         </div>
+        {selectedDate && (
+          <span
+            style={{
+              color: "white",
+              fontSize: "0.8rem",
+              marginLeft: "4px",
+            }}
+          >
+            {new Date(selectedDate).toLocaleDateString("en-GB", {
+              day: "2-digit",
+              month: "short",
+            })}
+          </span>
+        )}
 
         <div className="add-task-button">
-          <p>Add Task</p>{" "}
+          <p>{loading ? "Adding" : "Add Task"}</p>{" "}
           <div className="slider-wrapper" ref={sliderWrapperRef}>
             <motion.div
               className="add-task-slider"
@@ -104,7 +159,7 @@ export function AddTask({
               dragMomentum={false}
               onDragEnd={(e, info) => {
                 if (info.offset.x > sliderWrapperWidth / 1.5) {
-                  console.log("half crossed");
+                  handleAddTask();
                   controls.start({
                     x: 0,
                     transition: {

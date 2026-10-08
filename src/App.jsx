@@ -1,37 +1,22 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import { useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { Login } from "./pages/auth/Login";
 import { Header } from "./components/Header";
-import { AddTask } from "./components/AddTask";
 import { Home } from "./pages/home/Home";
 import { Task } from "./pages/Task/Task";
 import { CalendarDates } from "./pages/calendar/CalendarDates";
 import { Setting } from "./pages/setting/Setting";
 import { Signup } from "./pages/auth/Signup";
-import { DatePicker } from "./components/DatePicker";
 import "./App.css";
 
 function App() {
   const location = useLocation();
-  const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
-  const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
 
   const isSettings = !["/", "/tasks", "/calendar"].includes(location.pathname);
 
   return (
     <>
       {!isSettings && <Header />}
-      <AddTask
-        isAddTaskOpen={isAddTaskOpen}
-        setIsAddTaskOpen={setIsAddTaskOpen}
-        isDatePickerOpen={isDatePickerOpen}
-        setIsDatePickerOpen={setIsDatePickerOpen}
-      />
-      <DatePicker
-        isDatePickerOpen={isDatePickerOpen}
-        setIsDatePickerOpen={setIsDatePickerOpen}
-      />
       <AnimatePresence mode="wait">
         <motion.div
           key={location.pathname}
@@ -52,15 +37,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/tasks" element={<Task />} />
-            <Route
-              path="/calendar"
-              element={
-                <CalendarDates
-                  isAddTaskOpen={isAddTaskOpen}
-                  setIsAddTaskOpen={setIsAddTaskOpen}
-                />
-              }
-            />
+            <Route path="/calendar" element={<CalendarDates />} />
             <Route path="/setting" element={<Setting />} />
 
             <Route path="/login" element={<Login />} />
