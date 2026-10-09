@@ -60,13 +60,13 @@ export function TaskCard({ todo, onSwipeDelete }) {
                   month: "short",
                 })
               : "N/A"}{" "}
-            -{" "}
+            {todo.dueDate ? "-" : ""}{" "}
             {todo.dueDate
               ? new Date(todo.dueDate).toLocaleString("en-GB", {
                   day: "2-digit",
                   month: "short",
                 })
-              : "N/A"}
+              : ""}
           </p>
         </div>
 
