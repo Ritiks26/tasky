@@ -1,12 +1,14 @@
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
+import { PublicRoute } from "./components/PublicRoute";
+import { ProtectedRoute } from "./components/ProtectedRoute";
+import { Signup } from "./pages/auth/Signup";
 import { Login } from "./pages/auth/Login";
 import { Header } from "./components/Header";
 import { Home } from "./pages/home/Home";
 import { Task } from "./pages/Task/Task";
 import { CalendarDates } from "./pages/calendar/CalendarDates";
 import { Setting } from "./pages/setting/Setting";
-import { Signup } from "./pages/auth/Signup";
 import "./App.css";
 
 function App() {
@@ -32,17 +34,58 @@ function App() {
             opacity: 1,
             y: 0,
           }}
-          // transition={{ duration: 0.3, ease: "easeInOut" }}
         >
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tasks" element={<Task />} />
-            <Route path="/calendar" element={<CalendarDates />} />
-            <Route path="/setting" element={<Setting />} />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Home />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/tasks"
+              element={
+                <ProtectedRoute>
+                  <Task />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/calendar"
+              element={
+                <ProtectedRoute>
+                  <CalendarDates />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/setting"
+              element={
+                <ProtectedRoute>
+                  <Setting />
+                </ProtectedRoute>
+              }
+            />
 
-            <Route path="/login" element={<Login />} />
+            <Route
+              path="/login"
+              element={
+                <PublicRoute>
+                  <Login />
+                </PublicRoute>
+              }
+            />
 
-            <Route path="/signup" element={<Signup />} />
+            <Route
+              path="/signup"
+              element={
+                <PublicRoute>
+                  <Signup />
+                </PublicRoute>
+              }
+            />
           </Routes>
         </motion.div>
       </AnimatePresence>
