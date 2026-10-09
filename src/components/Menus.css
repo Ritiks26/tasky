@@ -45,3 +45,14 @@
   background-color: var(--clr-main);
   z-index: 1;
 }
+
+.notification-message {
+  position: absolute;
+  top: 0.125em;
+  right: 0.25em;
+  height: 20%;
+  aspect-ratio: 1 / 1;
+  background-color: var(--clr-major);
+  z-index: 99;
+  border-radius: 50%;
+}

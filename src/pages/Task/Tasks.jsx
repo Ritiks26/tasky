@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
 import axios from "axios";
+import { useNotification } from "../../context/NotificationContext";
+import { useEffect, useRef, useState } from "react";
 import { QuickView } from "../../components/QuickView";
 import { TaskCard } from "../../components/TaskCard";
 import { AnimatePresence, motion } from "motion/react";
@@ -11,6 +12,15 @@ export function Tasks() {
   const timerRef = useRef(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const { setHasNewTask } = useNotification();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setHasNewTask(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   const fetchTodo = async () => {
     try {

@@ -1,12 +1,12 @@
 import { easeOut, motion, useAnimation } from "motion/react";
 import { useState, useEffect, useRef } from "react";
-import "./AddTask.css";
+import { useNotification } from "../context/NotificationContext";
 import axios from "axios";
+import "./AddTask.css";
 
 const priorityTask = ["Low", "Medium", "High"];
 
 export function AddTask({
-  setIsAddTaskOpen,
   isAddTaskOpen,
   isDatePickerOpen,
   setIsDatePickerOpen,
@@ -19,6 +19,7 @@ export function AddTask({
   const [loading, setLoading] = useState(false);
   const sliderWrapperRef = useRef(null);
   const controls = useAnimation();
+  const { setHasNewTask } = useNotification();
 
   useEffect(() => {
     if (sliderWrapperRef.current) {
@@ -47,6 +48,7 @@ export function AddTask({
       );
 
       console.log("task added", res.data);
+      setHasNewTask(true);
       setTaskTitle("");
       setTaskPriority("Low");
       setSelectedDate(null);

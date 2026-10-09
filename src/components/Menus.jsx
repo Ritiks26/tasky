@@ -1,5 +1,6 @@
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "motion/react";
+import { useNotification } from "../context/NotificationContext";
 import "./Menus.css";
 
 const menus = [
@@ -139,6 +140,7 @@ const menus = [
 ];
 
 export function Menus() {
+  const { hasNewTask } = useNotification();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -169,6 +171,9 @@ export function Menus() {
           onClick={() => handleMenuClick(menu)}
         >
           {menu.svg}
+          {hasNewTask && menu.title === "tasks" && (
+            <div className="notification-message"></div>
+          )}
           {activeMenu === menu.title && (
             <motion.div
               className="menu-active-btn"
