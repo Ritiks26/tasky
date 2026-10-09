@@ -54,7 +54,7 @@ export function TaskCard({ todo, onSwipeDelete }) {
             />
           </svg>
           <p>
-            {todo.dueDate
+            {todo.createdAt
               ? new Date(todo.createdAt).toLocaleString("en-GB", {
                   day: "2-digit",
                   month: "short",
