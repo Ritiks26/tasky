@@ -5,6 +5,11 @@ import axios from "axios";
 import "./AddTask.css";
 
 const priorityTask = ["Low", "Medium", "High"];
+const priorityMessages = {
+  Low: "Fewer reminders. Stay relaxed.",
+  Medium: "Regular reminders to keep you on track.",
+  High: "Repeated reminders until it's done.",
+};
 
 export function AddTask({
   isAddTaskOpen,
@@ -133,6 +138,11 @@ export function AddTask({
             </div>
           ))}
         </div>
+
+        <div className="priority-message">
+          <p>{priorityMessages[taskPriority]}</p>
+        </div>
+
         {selectedDate && (
           <span
             style={{

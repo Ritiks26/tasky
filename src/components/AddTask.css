@@ -126,6 +126,17 @@
   }
 }
 
+.priority-message {
+  width: 100%;
+  padding: 0.25rem;
+
+  p {
+    font-size: 0.7rem;
+
+    color: var(--text-light);
+  }
+}
+
 .input-container input:focus + label {
   top: 0;
   transform: translateY(-63%);
