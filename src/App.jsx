@@ -1,4 +1,6 @@
 import { Routes, Route, useLocation } from "react-router-dom";
+import axios from "axios";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { PublicRoute } from "./components/PublicRoute";
 import { ProtectedRoute } from "./components/ProtectedRoute";
@@ -13,8 +15,37 @@ import "./App.css";
 
 function App() {
   const location = useLocation();
+  const [todos, setTodos] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
 
   const isSettings = !["/", "/tasks", "/calendar"].includes(location.pathname);
+
+  const fetchTodo = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      setTodos([]);
+      setLoading(false);
+      return;
+    }
+
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/todos`, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+      setTodos(res.data.todos);
+    } catch (err) {
+      const message = err.response?.data?.message || "something wwnt wrong";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchTodo();
+  }, []);
 
   return (
     <>
@@ -48,7 +79,13 @@ function App() {
               path="/tasks"
               element={
                 <ProtectedRoute>
-                  <Task />
+                  <Task
+                    todos={todos}
+                    setTodos={setTodos}
+                    loading={loading}
+                    error={error}
+                    fetchTodo={fetchTodo}
+                  />
                 </ProtectedRoute>
               }
             />
@@ -56,7 +93,7 @@ function App() {
               path="/calendar"
               element={
                 <ProtectedRoute>
-                  <CalendarDates />
+                  <CalendarDates fetchTodo={fetchTodo} />
                 </ProtectedRoute>
               }
             />
@@ -64,7 +101,7 @@ function App() {
               path="/setting"
               element={
                 <ProtectedRoute>
-                  <Setting />
+                  <Setting setTodos={setTodos} />
                 </ProtectedRoute>
               }
             />
@@ -73,7 +110,7 @@ function App() {
               path="/login"
               element={
                 <PublicRoute>
-                  <Login />
+                  <Login fetchTodo={fetchTodo} />
                 </PublicRoute>
               }
             />

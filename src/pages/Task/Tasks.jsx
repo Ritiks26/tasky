@@ -6,12 +6,9 @@ import { TaskCard } from "../../components/TaskCard";
 import { AnimatePresence, motion } from "motion/react";
 import "./Tasks.css";
 
-export function Tasks() {
-  const [todos, setTodos] = useState([]);
+export function Tasks({ todos, setTodos, loading, error, fetchTodo }) {
   const [pendingDelete, setPendingDelete] = useState(null);
   const timerRef = useRef(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
   const { setHasNewTask } = useNotification();
 
   useEffect(() => {
@@ -20,25 +17,6 @@ export function Tasks() {
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
-
-  const fetchTodo = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/todos`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setTodos(res.data.todos);
-    } catch (err) {
-      const message = err.response?.data?.message || "something wwnt wrong";
-      setError(message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchTodo();
   }, []);
 
   const finalizeDelete = async (todo) => {
@@ -52,6 +30,7 @@ export function Tasks() {
       );
     } catch (err) {
       console.log(err.response?.data?.message || "something went wrong");
+      await fetchTodo();
     }
   };
 
@@ -84,7 +63,8 @@ export function Tasks() {
     setPendingDelete(null);
   };
 
-  if (loading) return <p>Loading tasks...</p>;
+  if (loading)
+    return <p style={{ color: "red", fontSize: "2rem" }}>Loading tasks...</p>;
   if (error) return <p>{error}</p>;
   return (
     <div className="tasks-container">

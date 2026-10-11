@@ -1,15 +1,37 @@
 import { format } from "date-fns";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Calendar } from "../../components/Calendar";
 import { AddTask } from "../../components/AddTask";
 import { DatePicker } from "../../components/DatePicker";
 import "./CalendarDates.css";
 
-export function CalendarDates() {
+export function CalendarDates({ fetchTodo }) {
+  // const [activeDate, setActiveDate] = useState(new Date());
+  // const [todos, setTodos] = useState([]);
   const currentDate = new Date();
   const [isAddTaskOpen, setIsAddTaskOpen] = useState(false);
   const [isDatePickerOpen, setIsDatePickerOpen] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
+
+  // const fetchTodos = async () => {
+  //   try {
+  //     const token = localStorage.getItem("token");
+  //     const response = await axios.get(
+  //       `${import.meta.env.VITE_API_URL}/api/todos`,
+  //       {
+  //         headers: { authorization: `Bearer ${token}` },
+  //       },
+  //     );
+
+  //     setTodos(response.data.todos);
+  //   } catch (err) {
+  //     console.log(err.response?.data?.message || "Something went wrong");
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchTodos();
+  // }, []);
 
   return (
     <div className="calendar-container">
@@ -79,6 +101,7 @@ export function CalendarDates() {
         setIsDatePickerOpen={setIsDatePickerOpen}
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
+        fetchTodo={fetchTodo}
       />
       <DatePicker
         isDatePickerOpen={isDatePickerOpen}

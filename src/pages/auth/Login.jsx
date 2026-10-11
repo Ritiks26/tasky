@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Auth.css";
 
-export function Login() {
+export function Login({ fetchTodo }) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const navigation = useNavigate();
 
@@ -30,6 +30,7 @@ export function Login() {
       );
       console.log("login done", res.data);
       localStorage.setItem("token", res.data.token);
+      await fetchTodo();
       navigation("/");
     } catch (err) {
       const message = err.response?.data?.message || "something went wrong";

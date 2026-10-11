@@ -17,6 +17,7 @@ export function AddTask({
   setIsDatePickerOpen,
   selectedDate,
   setSelectedDate,
+  fetchTodo,
 }) {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskPriority, setTaskPriority] = useState("Low");
@@ -61,6 +62,7 @@ export function AddTask({
       console.log(err.response?.data?.message || "something went wrong");
     } finally {
       setLoading(false);
+      await fetchTodo();
     }
   };
 
