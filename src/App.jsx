@@ -93,7 +93,7 @@ function App() {
               path="/calendar"
               element={
                 <ProtectedRoute>
-                  <CalendarDates fetchTodo={fetchTodo} />
+                  <CalendarDates fetchTodo={fetchTodo} todos={todos} />
                 </ProtectedRoute>
               }
             />

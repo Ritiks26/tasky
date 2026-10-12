@@ -72,3 +72,20 @@
     color: var(--text-dark);
   }
 }
+
+.dates-new.active {
+  position: relative;
+  color: #fff;
+  border-radius: 50%;
+  background-color: #00000084;
+  font-size: 0.8rem;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0.5rem;
+    background: #000;
+    border-radius: inherit;
+    z-index: -1;
+  }
+}

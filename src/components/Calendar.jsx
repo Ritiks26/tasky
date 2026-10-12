@@ -8,11 +8,12 @@ import {
   addMonths,
   subMonths,
   isToday,
+  isSameDay,
 } from "date-fns";
 import "./Calendar.css";
 import { useState } from "react";
 
-export function Calendar() {
+export function Calendar({ activeDate, setActiveDate }) {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
@@ -88,11 +89,12 @@ export function Calendar() {
         {days.map((day) => {
           const isCurrentMonth = isSameMonth(day, currentMonth);
           const today = isToday(day) && isCurrentMonth;
-
+          const isActive = isCurrentMonth && isSameDay(day, activeDate);
           return (
             <div
               key={day}
-              className={`dates-new ${!isCurrentMonth ? "empty" : ""} ${today ? "today" : ""}`}
+              onClick={() => isCurrentMonth && setActiveDate(day)}
+              className={`dates-new ${!isCurrentMonth ? "empty" : ""} ${today ? "today" : ""} ${isActive ? "active" : ""}`}
             >
               {isCurrentMonth ? format(day, "d") : ""}
             </div>

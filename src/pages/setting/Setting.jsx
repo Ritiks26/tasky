@@ -95,12 +95,11 @@ const setting = [
   },
 ];
 
-export function Setting({ setTodos }) {
+export function Setting() {
   const navigate = useNavigate();
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    setTodos([]);
     navigate("/login");
   };
   return (

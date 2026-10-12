@@ -58,11 +58,11 @@ export function AddTask({
       setTaskTitle("");
       setTaskPriority("Low");
       setSelectedDate(null);
+      await fetchTodo();
     } catch (err) {
       console.log(err.response?.data?.message || "something went wrong");
     } finally {
       setLoading(false);
-      await fetchTodo();
     }
   };
 
