@@ -66,7 +66,7 @@ function App() {
             y: 0,
           }}
         >
-          <Routes>
+          <Routes location={location}>
             <Route
               path="/"
               element={

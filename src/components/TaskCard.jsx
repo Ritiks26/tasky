@@ -16,9 +16,9 @@ export function TaskCard({ todo, onSwipeDelete }) {
       onDragEnd={(e, info) => {
         if (info.offset.x < -220) {
           controls.start({
+            transition: { duration: 0.2 },
             x: -400,
             opacity: 0,
-            transition: { duration: 0.2 },
           });
           onSwipeDelete(todo);
         } else {
