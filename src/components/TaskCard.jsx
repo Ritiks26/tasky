@@ -1,12 +1,14 @@
 import { motion, useAnimation } from "motion/react";
 import "./TaskCard.css";
+import { useState } from "react";
 
 export function TaskCard({ todo, onSwipeDelete }) {
   const controls = useAnimation();
+  const [isTaskStatus, setIsTaskStatus] = useState(false);
 
   return (
     <motion.div
-      className="task-card"
+      className={`task-card ${isTaskStatus ? "toggled" : ""}`}
       layout
       drag="x"
       dragElastic={0.1}
@@ -33,6 +35,16 @@ export function TaskCard({ todo, onSwipeDelete }) {
       <div className="upper-card">
         <div className="card-title">
           <p>{todo.title}</p>
+        </div>
+        <div
+          className={"task-status-toggle"}
+          onClick={() => setIsTaskStatus(!isTaskStatus)}
+        >
+          <div
+            className={`task-toggle-slider ${isTaskStatus ? "toggled" : ""}`}
+          >
+            {" "}
+          </div>
         </div>
       </div>
 
