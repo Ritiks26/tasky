@@ -1,21 +1,20 @@
 import { motion } from "motion/react";
 import "./TaskCard.css";
-import { useState } from "react";
 
-export function TaskCard({ todo, onSwipeDelete }) {
-  const [isTaskStatus, setIsTaskStatus] = useState(false);
+export function TaskCard({ todo, onSwipeDelete, onToggleStatus }) {
+  const isDone = todo.completed;
 
   return (
     <motion.div
-      className={`task-card ${isTaskStatus ? "toggled" : ""}`}
+      className={`task-card ${isDone ? "toggled" : ""}`}
       layout
       drag="x"
       dragElastic={0.1}
       dragConstraints={{ left: -220, right: 0 }}
       dragSnapToOrigin
       animate={{
-        scale: isTaskStatus ? 0.95 : 1,
-        opacity: isTaskStatus ? 0.75 : 1,
+        scale: isDone ? 0.95 : 1,
+        opacity: isDone ? 0.75 : 1,
       }}
       exit={{ opacity: 0, x: -400, height: 0, marginBottom: 0 }}
       transition={{ type: "spring", stiffness: 300, damping: 25 }}
@@ -32,10 +31,10 @@ export function TaskCard({ todo, onSwipeDelete }) {
         </div>
         <div
           className="task-status-toggle"
-          onClick={() => setIsTaskStatus(!isTaskStatus)}
+          onClick={() => onToggleStatus(todo)}
         >
           <div
-            className={`task-toggle-slider ${isTaskStatus ? "toggled" : ""}`}
+            className={`task-toggle-slider ${isDone ? "toggled" : ""}`}
           ></div>
         </div>
       </div>
@@ -73,7 +72,6 @@ export function TaskCard({ todo, onSwipeDelete }) {
               : ""}
           </p>
         </div>
-
         <div className="task-priority">
           <p>{todo.priority} Priority</p>
         </div>

@@ -6,7 +6,14 @@ import { TaskCard } from "../../components/TaskCard";
 import { AnimatePresence, motion } from "motion/react";
 import "./Tasks.css";
 
-export function Tasks({ todos, setTodos, loading, error, fetchTodo }) {
+export function Tasks({
+  todos,
+  setTodos,
+  loading,
+  error,
+  fetchTodo,
+  onToggleStatus,
+}) {
   const [pendingDelete, setPendingDelete] = useState(null);
   const timerRef = useRef(null);
   const { setHasNewTask } = useNotification();
@@ -81,6 +88,7 @@ export function Tasks({ todos, setTodos, loading, error, fetchTodo }) {
             key={todo.id}
             todo={todo}
             onSwipeDelete={handleSwipeDelete}
+            onToggleStatus={onToggleStatus}
           />
         ))}
       </AnimatePresence>

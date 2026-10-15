@@ -47,6 +47,33 @@ function App() {
     fetchTodo();
   }, []);
 
+  const handleToggleStatus = async (todo) => {
+    const newStatus = !todo.completed;
+
+    setTodos((prev) =>
+      prev.map((t) => (t.id === todo.id ? { ...t, completed: newStatus } : t)),
+    );
+
+    try {
+      const response = axios.put(
+        `${import.meta.env.VITE_API_URL}/api/todos/${todo.id}`,
+        {
+          completed: newStatus,
+        },
+        {
+          headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+        },
+      );
+    } catch (err) {
+      setTodos((prev) =>
+        prev.map((t) =>
+          t.id === todo.id ? { ...t, completed: todo.completed } : t,
+        ),
+      );
+      console.error("status update failed", err);
+    }
+  };
+
   return (
     <>
       {!isSettings && <Header />}
@@ -85,6 +112,7 @@ function App() {
                     loading={loading}
                     error={error}
                     fetchTodo={fetchTodo}
+                    onToggleStatus={handleToggleStatus}
                   />
                 </ProtectedRoute>
               }
