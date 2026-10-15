@@ -24,10 +24,12 @@
 }
 
 .upper-card {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5rem;
   .card-title {
     p {
-      width: 75%;
-
       color: var(--text-light);
       font-size: 1.15rem;
       font-weight: 500;
@@ -68,5 +70,31 @@
     &::first-letter {
       text-transform: uppercase;
     }
+  }
+}
+
+.task-status-toggle {
+  position: relative;
+  height: 3vh;
+  aspect-ratio: 2 / 1;
+  background-color: var(--clr-primary);
+  border-radius: 4rem;
+  border: 1.5px solid var(--clr-main);
+  box-shadow: inset 0rem 0rem 0.25rem rgba(0, 0, 0, 0.322);
+
+  .task-toggle-slider {
+    position: absolute;
+    top: 50%;
+    left: 1.75%;
+    transform: translate(0%, -50%);
+    height: 90%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-color: var(--clr-main);
+    transition: all 0.25s ease-in-out;
+  }
+
+  .task-toggle-slider.toggled {
+    transform: translate(122%, -50%);
   }
 }

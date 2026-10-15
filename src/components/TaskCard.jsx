@@ -1,38 +1,42 @@
-import { motion, useAnimation } from "motion/react";
+import { motion } from "motion/react";
 import "./TaskCard.css";
+import { useState } from "react";
 
 export function TaskCard({ todo, onSwipeDelete }) {
-  const controls = useAnimation();
+  const [isTaskStatus, setIsTaskStatus] = useState(false);
 
   return (
     <motion.div
-      className="task-card"
+      className={`task-card ${isTaskStatus ? "toggled" : ""}`}
       layout
       drag="x"
       dragElastic={0.1}
-      exit={{ opacity: 0, height: 0, marginBottom: 0 }}
       dragConstraints={{ left: -220, right: 0 }}
-      animate={controls}
+      dragSnapToOrigin
+      animate={{
+        scale: isTaskStatus ? 0.95 : 1,
+        opacity: isTaskStatus ? 0.75 : 1,
+      }}
+      exit={{ opacity: 0, x: -400, height: 0, marginBottom: 0 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      whileDrag={{ scale: 0.95, opacity: 0.75 }}
       onDragEnd={(e, info) => {
         if (info.offset.x < -220) {
-          controls.start({
-            transition: { duration: 0.2 },
-            x: -400,
-            opacity: 0,
-          });
           onSwipeDelete(todo);
-        } else {
-          controls.start({
-            x: 0,
-            transition: { type: "spring", stiffness: 300, damping: 15 },
-          });
         }
       }}
-      whileDrag={{ scale: 0.95, opacity: 0.75 }}
     >
       <div className="upper-card">
         <div className="card-title">
           <p>{todo.title}</p>
+        </div>
+        <div
+          className="task-status-toggle"
+          onClick={() => setIsTaskStatus(!isTaskStatus)}
+        >
+          <div
+            className={`task-toggle-slider ${isTaskStatus ? "toggled" : ""}`}
+          ></div>
         </div>
       </div>
 
