@@ -51,6 +51,7 @@ export function AddTask({
         },
         {
           headers: { Authorization: `Bearer ${token}` },
+          timeout: 15000,
         },
       );
 
@@ -150,20 +151,20 @@ export function AddTask({
             <p>{priorityMessages[taskPriority]}</p>
           </div>
 
-          {selectedDate && (
-            <span
-              style={{
-                color: "white",
-                fontSize: "0.8rem",
-                marginLeft: "4px",
-              }}
-            >
-              {new Date(selectedDate).toLocaleDateString("en-GB", {
+          <span
+            style={{
+              color: "white",
+              fontSize: "0.8rem",
+              marginLeft: "4px",
+              minHeight: "1rem",
+            }}
+          >
+            {selectedDate &&
+              new Date(selectedDate).toLocaleDateString("en-GB", {
                 day: "2-digit",
                 month: "short",
               })}
-            </span>
-          )}
+          </span>
 
           <div className="add-task-button">
             <p>{loading ? "Adding" : "Add Task"}</p>{" "}
