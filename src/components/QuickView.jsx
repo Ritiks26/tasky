@@ -45,7 +45,7 @@ export function QuickView() {
         bg={"var(--clr-major)"}
         clr={"var(--text-light)"}
       />
-      <StatusButton message={"Pending"} bg={"var(--clr-violet)"} />
+      <StatusButton message={"Pending"} bg={"var(--clr-lite-violet)"} />
       <StatusButton message={"Finished"} bg={"#fff"} />
     </div>
   );

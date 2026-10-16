@@ -52,5 +52,5 @@ header {
 }
 
 .notification-section {
-  background-color: #e8e5f8;
+  background-color: var(--clr-lite-violet);
 }
