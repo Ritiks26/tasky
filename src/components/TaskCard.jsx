@@ -29,13 +29,19 @@ export function TaskCard({ todo, onSwipeDelete, onToggleStatus }) {
         <div className="card-title">
           <p>{todo.title}</p>
         </div>
-        <div
-          className="task-status-toggle"
-          onClick={() => onToggleStatus(todo)}
-        >
+        <div className="task-status-container">
           <div
-            className={`task-toggle-slider ${isDone ? "toggled" : ""}`}
-          ></div>
+            className="task-status-toggle"
+            onClick={() => onToggleStatus(todo)}
+          >
+            <div
+              className={`task-toggle-slider ${isDone ? "toggled" : ""}`}
+            ></div>
+          </div>
+
+          <div className="task-status-message">
+            <p>{isDone ? "FINISHED" : "PENDING"}</p>
+          </div>
         </div>
       </div>
 
