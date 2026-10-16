@@ -50,6 +50,7 @@
 
     .week {
       background-color: var(--clr-major);
+      color: var(--text-light);
     }
   }
 }

@@ -68,8 +68,8 @@
   }
 
   .dates-new.today {
-    background-color: #cbd87d;
-    color: var(--text-dark);
+    background-color: var(--clr-major);
+    color: var(--text-light);
   }
 }
 

@@ -17,10 +17,10 @@
   }
 
   &:nth-child(3n + 2) {
-    background-color: #cbd87d;
+    background-color: var(--clr-major);
   }
   &:nth-child(3n) {
-    background-color: #a6a0d2;
+    background-color: var(--clr-violet);
   }
 }
 

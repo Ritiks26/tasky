@@ -4,7 +4,7 @@
   aspect-ratio: 3 / 1;
   padding: 0 1.25rem;
 
-  background-color: #a6a0d2;
+  background-color: var(--clr-violet);
   border-radius: 6rem;
   display: flex;
   align-items: center;
@@ -56,11 +56,11 @@
 
   &:nth-child(4) {
     background-color: var(--clr-major);
-    color: var(--text-black);
+    color: var(--text-light);
 
     &::before {
       background-color: var(--clr-main);
-      color: var(--text-black);
+      color: var(--text-dark);
     }
   }
 }

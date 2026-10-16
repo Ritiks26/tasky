@@ -82,6 +82,7 @@
 
   .dates-each.active {
     background-color: var(--clr-major);
+    color: var(--text-light);
     pointer-events: none;
   }
 }
