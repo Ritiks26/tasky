@@ -1,11 +1,18 @@
 .quick-view {
-  height: 8vh;
+  height: 6vh;
   width: 100%;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0 1rem;
-  overflow: hidden;
+  margin-bottom: 0.5rem;
+  overflow: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 .quick-view-filter {

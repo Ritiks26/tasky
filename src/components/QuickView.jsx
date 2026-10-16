@@ -40,9 +40,9 @@ export function QuickView() {
           />
         </svg>
       </div>
-      <StatusButton message={"In progress"} />
-      <StatusButton message={"Finished"} />
-      <StatusButton message={"Due"} />
+      <StatusButton message={"All"} bg={"#e1f198"} />
+      <StatusButton message={"Pending"} bg={"#E8E5F8"} />
+      <StatusButton message={"Finished"} bg={"#fff"} />
     </div>
   );
 }
