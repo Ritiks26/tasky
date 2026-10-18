@@ -28,6 +28,7 @@
     .day,
     .week,
     .month {
+      position: relative;
       background-color: var(--clr-primary);
       height: 6vh;
       width: 100%;
@@ -40,6 +41,7 @@
       p {
         font-weight: 500;
         font-size: 0.9rem;
+        z-index: 2;
       }
     }
 
@@ -48,9 +50,13 @@
       aspect-ratio: 1 / 1;
     }
 
-    .week {
+    .active-filter-task {
       background-color: var(--clr-major);
       color: var(--text-light);
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      z-index: 1;
     }
   }
 }
@@ -65,32 +71,171 @@
   gap: 0.25rem;
 
   .bars {
+    position: relative;
     height: 100%;
     width: 100%;
     background-color: var(--clr-primary);
     border-radius: 1rem;
 
+    .overdue-bar {
+      position: absolute;
+      bottom: 0;
+      height: 100%;
+      width: 100%;
+      background-color: var(--clr-primary);
+      border-radius: inherit;
+    }
+
+    .high-priority-bar {
+      position: absolute;
+      bottom: 0;
+      height: 80%;
+      width: 100%;
+      background-color: var(--clr-major);
+      border-radius: inherit;
+    }
+
+    .in-progress-bar {
+      position: absolute;
+      bottom: 0;
+      height: 45%;
+      width: 100%;
+      background-color: var(--clr-violet);
+      border-radius: inherit;
+    }
+
+    .pending-bar {
+      position: absolute;
+      bottom: 0;
+      height: 30%;
+      width: 100%;
+      background-color: var(--clr-light-dark);
+      border-radius: inherit;
+    }
+
     &:nth-child(2) {
-      height: 75%;
+      height: 83%;
+
+      .overdue-bar {
+        position: absolute;
+        height: 100%;
+      }
+
+      .high-priority-bar {
+        height: 80%;
+      }
+
+      .in-progress-bar {
+        height: 63%;
+      }
+
+      .pending-bar {
+        height: 28%;
+      }
     }
 
     &:nth-child(3) {
-      height: 85%;
+      height: 95%;
+
+      .overdue-bar {
+        position: absolute;
+        height: 100%;
+      }
+
+      .high-priority-bar {
+        height: 60%;
+      }
+
+      .in-progress-bar {
+        height: 45%;
+      }
+
+      .pending-bar {
+        height: 25%;
+      }
     }
 
     &:nth-child(4) {
-      height: 65%;
+      height: 75%;
+
+      .overdue-bar {
+        position: absolute;
+        height: 100%;
+      }
+
+      .high-priority-bar {
+        height: 55%;
+      }
+
+      .in-progress-bar {
+        height: 45%;
+      }
+
+      .pending-bar {
+        height: 35%;
+      }
     }
 
     &:nth-child(5) {
-      height: 80%;
+      height: 90%;
+
+      .overdue-bar {
+        position: absolute;
+        height: 100%;
+      }
+
+      .high-priority-bar {
+        height: 55%;
+      }
+
+      .in-progress-bar {
+        height: 45%;
+      }
+
+      .pending-bar {
+        height: 35%;
+      }
     }
 
     &:nth-child(6) {
       height: 65%;
+
+      .overdue-bar {
+        position: absolute;
+        height: 100%;
+      }
+
+      .high-priority-bar {
+        height: 55%;
+      }
+
+      .in-progress-bar {
+        height: 45%;
+      }
+
+      .pending-bar {
+        height: 35%;
+      }
     }
     &:nth-child(7) {
       height: 95%;
+
+      .overdue-bar {
+        position: absolute;
+        height: 100%;
+      }
+
+      .high-priority-bar {
+        height: 55%;
+      }
+
+      .in-progress-bar {
+        height: 45%;
+      }
+
+      .pending-bar {
+        height: 35%;
+      }
     }
   }
 }

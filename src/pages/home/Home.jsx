@@ -1,16 +1,41 @@
+import { motion } from "motion/react";
+import { useState } from "react";
 import { HomePill } from "../../components/HomePill";
+import { getCardStats } from "../../utils/getCardStats";
 import "./Home.css";
 
-export function Home() {
+export function Home({ todos = [] }) {
+  const [activeTasksFilter, setActiveTasksFilter] = useState("week");
+  const stats = getCardStats(todos);
   return (
     <div className="home-container">
       <h1>Manage your task</h1>
 
       <div className="quick-task-view">
-        <HomePill title={"In progress"} />
-        <HomePill title={"In review"} />
-        <HomePill title={"In progress"} />
-        <HomePill title={"In review"} />
+        <HomePill
+          title={"In progress"}
+          bg={"var(--clr-violet)"}
+          txt={"var(--text-light)"}
+          count={stats.inProgress}
+        />
+        <HomePill
+          title={"Overdue "}
+          bg={"var(--clr-primary)"}
+          txt={"var(--text-dark)"}
+          count={stats.Overdue}
+        />
+        <HomePill
+          title={"Finished"}
+          bg={"var(--clr-light-dark)"}
+          txt={"var(--text-light)"}
+          count={stats.Finished}
+        />
+        <HomePill
+          title={"High Priority"}
+          bg={"var(--clr-major)"}
+          txt={"var(--text-light)"}
+          count={stats.highPriority}
+        />
       </div>
 
       <div className="task-schedule">
@@ -48,25 +73,81 @@ export function Home() {
               />
             </svg>
           </div>
-          <div className="day">
+          <div className="day" onClick={() => setActiveTasksFilter("day")}>
+            {activeTasksFilter === "day" && (
+              <motion.div
+                className="active-filter-task"
+                layoutId="filter-tasks"
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+              ></motion.div>
+            )}
             <p>Day</p>
           </div>
-          <div className="week">
+          <div className="week" onClick={() => setActiveTasksFilter("week")}>
+            {activeTasksFilter === "week" && (
+              <motion.div
+                className="active-filter-task"
+                layoutId="filter-tasks"
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+              ></motion.div>
+            )}
             <p>Week</p>
           </div>
-          <div className="month">
+          <div className="month" onClick={() => setActiveTasksFilter("month")}>
+            {activeTasksFilter === "month" && (
+              <motion.div
+                className="active-filter-task"
+                layoutId="filter-tasks"
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+              ></motion.div>
+            )}
             <p>Month</p>
           </div>
         </div>
         <div className="schedule-charts-container">
           <div className="schedule-charts">
-            <div className="bars"></div>
-            <div className="bars"></div>
-            <div className="bars"></div>
-            <div className="bars"></div>
-            <div className="bars"></div>
-            <div className="bars"></div>
-            <div className="bars"></div>
+            <div className="bars">
+              <div className="overdue-bar"></div>
+              <div className="high-priority-bar"></div>
+              <div className="in-progress-bar"></div>
+              <div className="pending-bar"></div>
+            </div>
+            <div className="bars">
+              <div className="overdue-bar"></div>
+              <div className="high-priority-bar"></div>
+              <div className="in-progress-bar"></div>
+              <div className="pending-bar"></div>
+            </div>
+            <div className="bars">
+              <div className="overdue-bar"></div>
+              <div className="high-priority-bar"></div>
+              <div className="in-progress-bar"></div>
+              <div className="pending-bar"></div>
+            </div>{" "}
+            <div className="bars">
+              <div className="overdue-bar"></div>
+              <div className="high-priority-bar"></div>
+              <div className="in-progress-bar"></div>
+              <div className="pending-bar"></div>
+            </div>{" "}
+            <div className="bars">
+              <div className="overdue-bar"></div>
+              <div className="high-priority-bar"></div>
+              <div className="in-progress-bar"></div>
+              <div className="pending-bar"></div>
+            </div>{" "}
+            <div className="bars">
+              <div className="overdue-bar"></div>
+              <div className="high-priority-bar"></div>
+              <div className="in-progress-bar"></div>
+              <div className="pending-bar"></div>
+            </div>
+            <div className="bars">
+              <div className="overdue-bar"></div>
+              <div className="high-priority-bar"></div>
+              <div className="in-progress-bar"></div>
+              <div className="pending-bar"></div>
+            </div>
           </div>
           <div className="schedule-weekdays">
             <p>S</p>

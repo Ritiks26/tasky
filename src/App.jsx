@@ -98,7 +98,7 @@ function App() {
               path="/"
               element={
                 <ProtectedRoute>
-                  <Home />
+                  <Home todos={todos} />
                 </ProtectedRoute>
               }
             />

@@ -95,10 +95,19 @@ export function CalendarDates({ fetchTodo, todos }) {
         selectedDate={selectedDate}
         setSelectedDate={setSelectedDate}
       />
-      <div className="day-tasks-card">
-        <h2>{format(activeDate, "dd MMM")}</h2>
 
-        {dayTodos.length === 0 && <p>No tasks for this day</p>}
+      <hr
+        style={{
+          border: "none",
+          borderBottom: "1px solid #b1b1b1",
+          margin: "1.5rem 0 0.5rem 0",
+        }}
+      />
+
+      <div className="day-tasks-card">
+        <h1>{format(activeDate, "dd MMM")}</h1>
+
+        {dayTodos.length === 0 && <p>No schedule task for this day!</p>}
 
         {dayTodos.map((todo) => (
           <div className="day-task-card" key={todo.id}>
