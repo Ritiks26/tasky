@@ -107,7 +107,11 @@ export function CalendarDates({ fetchTodo, todos }) {
       <div className="day-tasks-card">
         <h1>{format(activeDate, "dd MMM")}</h1>
 
-        {dayTodos.length === 0 && <p>No schedule task for this day!</p>}
+        {dayTodos.length === 0 && (
+          <p style={{ color: "#959595", marginTop: "1rem" }}>
+            No schedule task for this day!
+          </p>
+        )}
 
         {dayTodos.map((todo) => (
           <div className="day-task-card" key={todo.id}>

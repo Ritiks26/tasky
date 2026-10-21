@@ -1,7 +1,7 @@
 import { StatusButton } from "./StatusButton";
 import "./QuickView.css";
 
-export function QuickView() {
+export function QuickView({ taskFilter, activeFilter, setActiveFilter }) {
   return (
     <div className="quick-view">
       <div className="quick-view-filter">
@@ -40,13 +40,15 @@ export function QuickView() {
           />
         </svg>
       </div>
-      <StatusButton
-        message={"All"}
-        bg={"var(--clr-major)"}
-        clr={"var(--text-light)"}
-      />
-      <StatusButton message={"Pending"} bg={"var(--clr-lite-violet)"} />
-      <StatusButton message={"Finished"} bg={"#fff"} />
+
+      {taskFilter.map((filter) => (
+        <StatusButton
+          key={filter.key}
+          message={filter.label}
+          bg={filter.bg}
+          clr={filter.clr}
+        />
+      ))}
     </div>
   );
 }

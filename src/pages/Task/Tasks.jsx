@@ -6,6 +6,42 @@ import { TaskCard } from "../../components/TaskCard";
 import { AnimatePresence, motion } from "motion/react";
 import "./Tasks.css";
 
+const taskFilter = [
+  {
+    key: "all",
+    label: "All",
+    bg: "var(--clr-major)",
+    clr: "var(--text-light)",
+    empty: "No tasks yet. Create one!",
+  },
+  {
+    key: "inProgress",
+    label: "In progress",
+    bg: "var(--clr-lite-violet)",
+    empty: "Nothing in progress.",
+  },
+  {
+    key: "highPriority",
+    label: "High priority",
+    bg: "var(--clr-major)",
+    clr: "var(--text-light)",
+    empty: "No high priority tasks",
+  },
+  {
+    key: "overdue",
+    label: "Overdue",
+    bg: "#fff",
+    empty: "No overdue tasks",
+  },
+  {
+    key: "finished",
+    label: "Finished",
+    bg: "var(--clr-light-dark)",
+    clr: "var(--text-light)",
+    empty: "No finished tasks yet.",
+  },
+];
+
 export function Tasks({
   todos,
   setTodos,
@@ -14,6 +50,7 @@ export function Tasks({
   fetchTodo,
   onToggleStatus,
 }) {
+  const [activeFilter, setActiveFilter] = useState("all");
   const [pendingDelete, setPendingDelete] = useState(null);
   const timerRef = useRef(null);
   const { setHasNewTask } = useNotification();
@@ -75,9 +112,15 @@ export function Tasks({
   if (error) return <p>{error}</p>;
   return (
     <div className="tasks-container">
-      <QuickView />
+      <QuickView
+        taskFilter={taskFilter}
+        activeFilter={activeFilter}
+        setActiveFilter={setActiveFilter}
+      />
       {todos.length === 0 && (
-        <p style={{ marginInline: "auto", marginTop: "0.5rem" }}>
+        <p
+          style={{ color: "#959595", marginTop: "1rem", marginInline: "auto" }}
+        >
           No tasks yet. Create one!
         </p>
       )}

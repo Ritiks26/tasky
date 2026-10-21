@@ -18,6 +18,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+
+  h1 {
+    font-size: 1.25rem !important;
+    font-weight: 500 !important;
+  }
 }
 
 .undo-toast {
