@@ -103,51 +103,24 @@ export function Setting() {
     navigate("/login");
   };
   return (
-    <div className="settings-container">
-      <div className="setting-profile">
-        <div className="profile-picture">
-          <img
-            src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQzH4DvC4qso3pM0mEsXUP_r1HQc-rNEGylNONlnj5v589j31yo"
-            alt="user profile picture"
-          />
-        </div>
-        <div className="user-detail">
-          <div className="user-name">
-            <p>Ritik Singh</p>
+    <>
+      <title>Tasky | Settings</title>
+      <div className="settings-container">
+        <div className="setting-profile">
+          <div className="profile-picture">
+            <img
+              src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQzH4DvC4qso3pM0mEsXUP_r1HQc-rNEGylNONlnj5v589j31yo"
+              alt="user profile picture"
+            />
           </div>
-          <div className="edit-profile">
-            <p>Edit profile</p>
-            <svg
-              width="8"
-              height="8"
-              viewBox="0 0 8 4"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M0.500008 0.500015L3.34922 2.94219C3.72371 3.26319 4.27631 3.26319 4.6508 2.94219L7.50001 0.500015"
-                strokeWidth="1"
-                stroke="#f0f0f0"
-                strokeLinecap="round"
-              />
-            </svg>
-          </div>
-        </div>
-      </div>
-
-      <div className="settings-other">
-        {setting.map((action) => (
-          <div key={action.title} className="setting-wrapper">
-            <div className="setting-left-section">
-              <div className="seeing-icon"> {action.svg}</div>
-              <div className="setting-title">
-                <p>{action.title}</p>
-              </div>
+          <div className="user-detail">
+            <div className="user-name">
+              <p>Ritik Singh</p>
             </div>
-            <div className="setting-right-section">
-              {" "}
+            <div className="edit-profile">
+              <p>Edit profile</p>
               <svg
-                width="12"
+                width="8"
                 height="8"
                 viewBox="0 0 8 4"
                 fill="none"
@@ -155,37 +128,67 @@ export function Setting() {
               >
                 <path
                   d="M0.500008 0.500015L3.34922 2.94219C3.72371 3.26319 4.27631 3.26319 4.6508 2.94219L7.50001 0.500015"
-                  stroke="white"
+                  strokeWidth="1"
+                  stroke="#f0f0f0"
                   strokeLinecap="round"
                 />
               </svg>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
 
-      <div className="logout-action">
-        <svg
-          width="20"
-          height="20"
-          viewBox="0 0 92 81"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M39 3C19.1177 3 3 19.7893 3 40.5C3 61.2107 19.1177 78 39 78"
-            stroke="#f0f0f0"
-            strokeWidth="6"
-            strokeLinecap="round"
-          />
-          <path
-            d="M90.6213 42.1213C91.7929 40.9497 91.7929 39.0503 90.6213 37.8787L71.5294 18.7868C70.3579 17.6152 68.4584 17.6152 67.2868 18.7868C66.1152 19.9584 66.1152 21.8579 67.2868 23.0294L84.2574 40L67.2868 56.9706C66.1152 58.1421 66.1152 60.0416 67.2868 61.2132C68.4584 62.3848 70.3579 62.3848 71.5294 61.2132L90.6213 42.1213ZM28 40V43H88.5V40V37H28V40Z"
-            fill="#f0f0f0"
-          />
-        </svg>
+        <div className="settings-other">
+          {setting.map((action) => (
+            <div key={action.title} className="setting-wrapper">
+              <div className="setting-left-section">
+                <div className="seeing-icon"> {action.svg}</div>
+                <div className="setting-title">
+                  <p>{action.title}</p>
+                </div>
+              </div>
+              <div className="setting-right-section">
+                {" "}
+                <svg
+                  width="12"
+                  height="8"
+                  viewBox="0 0 8 4"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M0.500008 0.500015L3.34922 2.94219C3.72371 3.26319 4.27631 3.26319 4.6508 2.94219L7.50001 0.500015"
+                    stroke="white"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </div>
+            </div>
+          ))}
+        </div>
 
-        <p onClick={handleLogout}>Log out</p>
+        <div className="logout-action">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 92 81"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M39 3C19.1177 3 3 19.7893 3 40.5C3 61.2107 19.1177 78 39 78"
+              stroke="#f0f0f0"
+              strokeWidth="6"
+              strokeLinecap="round"
+            />
+            <path
+              d="M90.6213 42.1213C91.7929 40.9497 91.7929 39.0503 90.6213 37.8787L71.5294 18.7868C70.3579 17.6152 68.4584 17.6152 67.2868 18.7868C66.1152 19.9584 66.1152 21.8579 67.2868 23.0294L84.2574 40L67.2868 56.9706C66.1152 58.1421 66.1152 60.0416 67.2868 61.2132C68.4584 62.3848 70.3579 62.3848 71.5294 61.2132L90.6213 42.1213ZM28 40V43H88.5V40V37H28V40Z"
+              fill="#f0f0f0"
+            />
+          </svg>
+
+          <p onClick={handleLogout}>Log out</p>
+        </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -9,13 +9,16 @@ export function Task({
   onToggleStatus,
 }) {
   return (
-    <Tasks
-      todos={todos}
-      setTodos={setTodos}
-      loading={loading}
-      error={error}
-      fetchTodo={fetchTodo}
-      onToggleStatus={onToggleStatus}
-    />
+    <>
+      <title>Tasky | Tasks</title>
+      <Tasks
+        todos={todos}
+        setTodos={setTodos}
+        loading={loading}
+        error={error}
+        fetchTodo={fetchTodo}
+        onToggleStatus={onToggleStatus}
+      />
+    </>
   );
 }

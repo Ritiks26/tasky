@@ -10,35 +10,38 @@ export function Home({ todos = [] }) {
   const stats = getCardStats(todos);
 
   return (
-    <div className="home-container">
-      <h1>Manage your task</h1>
+    <>
+      <title>Tasky | Home</title>
+      <div className="home-container">
+        <h1>Manage your task</h1>
 
-      <div className="quick-task-view">
-        <HomePill
-          title={"In progress"}
-          bg={"var(--clr-violet)"}
-          txt={"var(--text-light)"}
-          count={stats.inProgress}
-        />
-        <HomePill
-          title={"Overdue "}
-          bg={"var(--clr-primary)"}
-          txt={"var(--text-dark)"}
-          count={stats.Overdue}
-        />
-        <HomePill
-          title={"Finished"}
-          bg={"var(--clr-light-dark)"}
-          txt={"var(--text-light)"}
-          count={stats.Finished}
-        />
-        <HomePill
-          title={"High Priority"}
-          bg={"var(--clr-major)"}
-          txt={"var(--text-light)"}
-          count={stats.highPriority}
-        />
+        <div className="quick-task-view">
+          <HomePill
+            title={"In progress"}
+            bg={"var(--clr-violet)"}
+            txt={"var(--text-light)"}
+            count={stats.inProgress}
+          />
+          <HomePill
+            title={"Overdue "}
+            bg={"var(--clr-primary)"}
+            txt={"var(--text-dark)"}
+            count={stats.Overdue}
+          />
+          <HomePill
+            title={"Finished"}
+            bg={"var(--clr-light-dark)"}
+            txt={"var(--text-light)"}
+            count={stats.Finished}
+          />
+          <HomePill
+            title={"High Priority"}
+            bg={"var(--clr-major)"}
+            txt={"var(--text-light)"}
+            count={stats.highPriority}
+          />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
