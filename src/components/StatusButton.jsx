@@ -1,12 +1,16 @@
 import "./StatusButton.css";
 
-export function StatusButton({ message, bg, clr }) {
+export function StatusButton({ message, bg, clr, count = 0, active, onClick }) {
   return (
-    <div className="status-button">
+    <button
+      className={`status-button ${active ? "active" : ""} ${count === 0 ? "empty" : ""}`}
+      type="button"
+      onClick={onClick}
+    >
       <p>{message}</p>
       <div className="status-count" style={{ backgroundColor: bg }}>
-        <p style={{ color: clr }}>3</p>
+        <p style={{ color: clr }}>{count}</p>
       </div>
-    </div>
+    </button>
   );
 }

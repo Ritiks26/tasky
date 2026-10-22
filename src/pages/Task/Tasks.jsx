@@ -1,9 +1,10 @@
 import axios from "axios";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
 import { useNotification } from "../../context/NotificationContext";
-import { useEffect, useRef, useState } from "react";
 import { QuickView } from "../../components/QuickView";
 import { TaskCard } from "../../components/TaskCard";
-import { AnimatePresence, motion } from "motion/react";
+import { filterTodos } from "../../utils/filterTodo";
 import "./Tasks.css";
 
 const taskFilter = [
@@ -54,6 +55,21 @@ export function Tasks({
   const [pendingDelete, setPendingDelete] = useState(null);
   const timerRef = useRef(null);
   const { setHasNewTask } = useNotification();
+
+  const visibleTodos = useMemo(
+    () => filterTodos(todos, activeFilter),
+    [todos, activeFilter],
+  );
+
+  const counts = useMemo(() => {
+    const result = {};
+    taskFilter.forEach((f) => {
+      result[f.key] = filterTodos(todos, f.key).length;
+    });
+    return result;
+  }, [todos]);
+
+  const activeConfig = taskFilter.find((f) => f.key === activeFilter);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -116,17 +132,20 @@ export function Tasks({
         taskFilter={taskFilter}
         activeFilter={activeFilter}
         setActiveFilter={setActiveFilter}
+        counts={counts}
       />
-      {todos.length === 0 && (
+      {visibleTodos.length === 0 && (
         <p
           style={{ color: "#959595", marginTop: "1rem", marginInline: "auto" }}
         >
-          No tasks yet. Create one!
+          {todos.length === 0
+            ? "No tasks yet. Create one!"
+            : activeConfig.empty}
         </p>
       )}
 
       <AnimatePresence>
-        {todos.map((todo) => (
+        {visibleTodos.map((todo) => (
           <TaskCard
             key={todo.id}
             todo={todo}

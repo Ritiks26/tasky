@@ -1,7 +1,12 @@
 import { StatusButton } from "./StatusButton";
 import "./QuickView.css";
 
-export function QuickView({ taskFilter, activeFilter, setActiveFilter }) {
+export function QuickView({
+  taskFilter,
+  activeFilter,
+  setActiveFilter,
+  counts,
+}) {
   return (
     <div className="quick-view">
       <div className="quick-view-filter">
@@ -47,6 +52,9 @@ export function QuickView({ taskFilter, activeFilter, setActiveFilter }) {
           message={filter.label}
           bg={filter.bg}
           clr={filter.clr}
+          count={counts[filter.key]}
+          active={activeFilter === filter.key}
+          onClick={() => setActiveFilter(filter.key)}
         />
       ))}
     </div>

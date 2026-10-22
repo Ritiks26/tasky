@@ -36,3 +36,18 @@
     }
   }
 }
+
+.status-button {
+  transition:
+    border-color 0.25s ease,
+    transform 0.15s ease,
+    opacity 0.25s ease;
+}
+
+.status-button.active {
+  transform: scale(0.95);
+}
+
+.status-button.empty .status-count {
+  opacity: 0.4;
+}
