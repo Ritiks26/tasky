@@ -160,6 +160,17 @@
   }
 }
 
+.signup-back {
+  height: 6vh;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: var(--clr-light-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
 .registered-user {
   margin-top: 2rem;
   text-align: center;
