@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
+import { getAuthError } from "../../utils/getAuthError";
 import "./Auth.css";
 
 export function Signup() {
@@ -11,7 +12,7 @@ export function Signup() {
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
@@ -37,9 +38,9 @@ export function Signup() {
       console.log("signup done", res.data);
       navigation("/login");
     } catch (err) {
-      const message = err.response?.data?.message || "something went wrong";
-      setStep(1);
-      setError(message);
+      const authError = getAuthError(err);
+      if (authError.field !== "password") setStep(1);
+      setError(authError);
     } finally {
       setLoading(false);
     }
@@ -106,7 +107,11 @@ export function Signup() {
           </>
         )}
 
-        {error && <p className="error-message">{error}</p>}
+        {error && (
+          <p className="error-message" role="alert" aria-live="polite">
+            {error.message}
+          </p>
+        )}
 
         <form className="signup-input-container" onSubmit={handleSubmit}>
           {step === 1 && (
@@ -119,6 +124,7 @@ export function Signup() {
                   placeholder="Enter your name"
                   value={formData.name}
                   onChange={handleChange}
+                  aria-invalid={error?.field === "name"}
                   required
                 />
               </div>
@@ -131,6 +137,7 @@ export function Signup() {
                   placeholder="hello@company.com"
                   value={formData.email}
                   onChange={handleChange}
+                  aria-invalid={error?.field === "email"}
                   required
                 />
               </div>
@@ -147,6 +154,7 @@ export function Signup() {
                   placeholder="Create a password"
                   value={formData.password}
                   onChange={handleChange}
+                  aria-invalid={error?.field === "password"}
                   required
                 />
 

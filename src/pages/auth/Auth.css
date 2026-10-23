@@ -12,6 +12,17 @@
   }
 }
 
+.error-message {
+  margin-top: 1rem;
+  color: #ff8f8f;
+  font-size: 0.9rem;
+}
+
+.login-input-container input[aria-invalid="true"],
+.signup-input-container input[aria-invalid="true"] {
+  border-color: #ff8f8f;
+}
+
 .login-input-container,
 .signup-input-container {
   margin-top: 1.75rem;

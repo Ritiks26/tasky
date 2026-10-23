@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { getAuthError } from "../../utils/getAuthError";
 import "./Auth.css";
 
 export function Login({ fetchTodo }) {
@@ -11,7 +12,7 @@ export function Login({ fetchTodo }) {
     email: "",
     password: "",
   });
-  const [error, setError] = useState("");
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState("");
 
   const handleChange = (e) => {
@@ -33,8 +34,7 @@ export function Login({ fetchTodo }) {
       await fetchTodo();
       navigation("/");
     } catch (err) {
-      const message = err.response?.data?.message || "something went wrong";
-      setError(message);
+      setError(getAuthError(err));
     } finally {
       setLoading(false);
     }
@@ -46,7 +46,11 @@ export function Login({ fetchTodo }) {
       <div className="login-container">
         <h1>Log in to Tasky</h1>
 
-        {error && <p className="error-message">{error}</p>}
+        {error && (
+          <p className="error-message" role="alert" aria-live="polite">
+            {error.message}
+          </p>
+        )}
 
         <form className="login-input-container" onSubmit={handleSubmit}>
           <div className="email">
@@ -57,6 +61,7 @@ export function Login({ fetchTodo }) {
               placeholder="hello@company.com"
               value={formData.email}
               onChange={handleChange}
+              aria-invalid={error?.field === "email"}
               required
             />
           </div>
@@ -70,6 +75,7 @@ export function Login({ fetchTodo }) {
                 placeholder="Your password"
                 value={formData.password}
                 onChange={handleChange}
+                aria-invalid={error?.field === "password"}
                 required
               />
 
