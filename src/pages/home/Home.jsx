@@ -21,24 +21,32 @@ export function Home({ todos = [] }) {
             bg={"var(--clr-violet)"}
             txt={"var(--text-light)"}
             count={stats.inProgress}
+            countBg={"var(--clr-main)"}
+            countClr={"var(--text-dark)"}
           />
           <HomePill
             title={"Overdue "}
-            bg={"var(--clr-primary)"}
+            bg={"var(--clr-main)"}
             txt={"var(--text-dark)"}
             count={stats.Overdue}
+            countBg={"var(--clr-light-dark)"}
+            countClr={"var(--text-light)"}
           />
           <HomePill
             title={"Finished"}
             bg={"var(--clr-light-dark)"}
             txt={"var(--text-light)"}
             count={stats.Finished}
+            countBg={"var(--clr-main)"}
+            countClr={"var(--text-dark)"}
           />
           <HomePill
             title={"High Priority"}
             bg={"var(--clr-major)"}
             txt={"var(--text-light)"}
             count={stats.highPriority}
+            countBg={"var(--clr-main)"}
+            countClr={"var(--text-dark)"}
           />
         </div>
       </div>

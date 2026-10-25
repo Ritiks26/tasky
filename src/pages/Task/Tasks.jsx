@@ -11,34 +11,26 @@ const taskFilter = [
   {
     key: "all",
     label: "All",
-    bg: "var(--clr-major)",
-    clr: "var(--text-light)",
     empty: "No tasks yet. Create one!",
   },
   {
     key: "inProgress",
     label: "In progress",
-    bg: "var(--clr-lite-violet)",
     empty: "Nothing in progress.",
   },
   {
     key: "highPriority",
     label: "High priority",
-    bg: "var(--clr-major)",
-    clr: "var(--text-light)",
     empty: "No high priority tasks",
   },
   {
     key: "overdue",
     label: "Overdue",
-    bg: "#fff",
     empty: "No overdue tasks",
   },
   {
     key: "finished",
     label: "Finished",
-    bg: "var(--clr-light-dark)",
-    clr: "var(--text-light)",
     empty: "No finished tasks yet.",
   },
 ];
@@ -123,9 +115,6 @@ export function Tasks({
     setPendingDelete(null);
   };
 
-  if (loading)
-    return <p style={{ color: "red", fontSize: "2rem" }}>Loading tasks...</p>;
-  if (error) return <p>{error}</p>;
   return (
     <div className="tasks-container">
       <QuickView
@@ -134,15 +123,6 @@ export function Tasks({
         setActiveFilter={setActiveFilter}
         counts={counts}
       />
-      {visibleTodos.length === 0 && (
-        <p
-          style={{ color: "#959595", marginTop: "1rem", marginInline: "auto" }}
-        >
-          {todos.length === 0
-            ? "No tasks yet. Create one!"
-            : activeConfig.empty}
-        </p>
-      )}
 
       <AnimatePresence>
         {visibleTodos.map((todo) => (
@@ -154,7 +134,23 @@ export function Tasks({
           />
         ))}
       </AnimatePresence>
+      {!loading && visibleTodos.length === 0 && (
+        <p
+          style={{ color: "#959595", marginTop: "1rem", marginInline: "auto" }}
+        >
+          {todos.length === 0
+            ? "No tasks yet. Create one!"
+            : activeConfig.empty}
+        </p>
+      )}
 
+      {loading && todos.length === 0 && (
+        <p
+          style={{ color: "#959595", marginTop: "1rem", marginInline: "auto" }}
+        >
+          Loading tasks...
+        </p>
+      )}
       <AnimatePresence>
         {pendingDelete && (
           <motion.div

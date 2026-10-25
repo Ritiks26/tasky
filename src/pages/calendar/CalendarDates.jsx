@@ -121,6 +121,11 @@ export function CalendarDates({ fetchTodo, todos }) {
                 <div className="card-title">
                   <p>{todo.title}</p>
                 </div>
+                <div className="task-status-priority-container">
+                  <div className={`task-priority ${todo.priority}`}>
+                    <p>{todo.priority}</p>
+                  </div>
+                </div>
               </div>
 
               <div className="lower-card">
@@ -134,31 +139,22 @@ export function CalendarDates({ fetchTodo, todos }) {
                   >
                     <path
                       d="M12 17V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-                      stroke="#fff"
+                      stroke="#9b9b9b"
                       strokeWidth="2"
                       strokeLinecap="round"
                       strokeLinejoin="round"
                     />
                   </svg>
                   <p>
-                    {todo.createdAt
-                      ? new Date(todo.createdAt).toLocaleString("en-GB", {
-                          day: "2-digit",
-                          month: "short",
-                        })
-                      : "N/A"}{" "}
-                    {todo.dueDate ? "-" : ""}{" "}
-                    {todo.dueDate
-                      ? new Date(todo.dueDate).toLocaleString("en-GB", {
-                          day: "2-digit",
-                          month: "short",
-                        })
-                      : ""}
+                    {todo.dueDate ? "Due on " : "Created on "}
+                    {new Date(todo.dueDate || todo.createdAt).toLocaleString(
+                      "en-GB",
+                      {
+                        month: "short",
+                        day: "2-digit",
+                      },
+                    )}
                   </p>
-                </div>
-
-                <div className="task-priority">
-                  <p>{todo.priority} Priority</p>
                 </div>
               </div>
             </div>

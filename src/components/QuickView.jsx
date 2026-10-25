@@ -50,8 +50,6 @@ export function QuickView({
         <StatusButton
           key={filter.key}
           message={filter.label}
-          bg={filter.bg}
-          clr={filter.clr}
           count={counts[filter.key]}
           active={activeFilter === filter.key}
           onClick={() => setActiveFilter(filter.key)}

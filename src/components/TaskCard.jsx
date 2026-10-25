@@ -29,18 +29,22 @@ export function TaskCard({ todo, onSwipeDelete, onToggleStatus }) {
         <div className="card-title">
           <p>{todo.title}</p>
         </div>
-        <div className="task-status-container">
-          <div
-            className="task-status-toggle"
-            onClick={() => onToggleStatus(todo)}
-          >
-            <div
-              className={`task-toggle-slider ${isDone ? "toggled" : ""}`}
-            ></div>
+        <div className="task-status-priority-container">
+          <div className={`task-priority ${todo.priority}`}>
+            <p>{todo.priority}</p>
           </div>
-
-          <div className="task-status-message">
-            <p>{isDone ? "FINISHED" : "PENDING"}</p>
+          <div className="task-status-container">
+            <div className="task-status-message">
+              <p>{isDone ? "finished" : "pending"}</p>
+            </div>
+            <div
+              className="task-status-toggle"
+              onClick={() => onToggleStatus(todo)}
+            >
+              <div
+                className={`task-toggle-slider ${isDone ? "toggled" : ""}`}
+              ></div>
+            </div>
           </div>
         </div>
       </div>
@@ -56,30 +60,19 @@ export function TaskCard({ todo, onSwipeDelete, onToggleStatus }) {
           >
             <path
               d="M12 17V12L14.5 10.5M21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3C16.9706 3 21 7.02944 21 12Z"
-              stroke="#fff"
+              stroke="#9b9b9b"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
           <p>
-            {todo.createdAt
-              ? new Date(todo.createdAt).toLocaleString("en-GB", {
-                  day: "2-digit",
-                  month: "short",
-                })
-              : "N/A"}{" "}
-            {todo.dueDate ? "-" : ""}{" "}
-            {todo.dueDate
-              ? new Date(todo.dueDate).toLocaleString("en-GB", {
-                  day: "2-digit",
-                  month: "short",
-                })
-              : ""}
+            {todo.dueDate ? "Due on " : "Created on "}
+            {new Date(todo.dueDate || todo.createdAt).toLocaleString("en-GB", {
+              month: "short",
+              day: "2-digit",
+            })}
           </p>
-        </div>
-        <div className="task-priority">
-          <p>{todo.priority} Priority</p>
         </div>
       </div>
     </motion.div>

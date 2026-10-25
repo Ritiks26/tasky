@@ -27,7 +27,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--clr-main);
 
     p {
       font-size: 1rem;

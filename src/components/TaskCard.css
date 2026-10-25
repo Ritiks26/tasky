@@ -1,27 +1,23 @@
 .task-card,
 .day-task-card {
   position: relative;
-  min-height: 20vh;
+  min-height: 15vh;
   width: 100%;
 
-  border-radius: 2rem;
-  padding: 1.25rem 1.25rem 0.5rem 1.25rem;
+  border-radius: 1.5rem;
+  padding: 1.25rem 1.25rem 1.25rem 1.25rem;
 
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 1rem;
+  background-color: var(--clr-main);
+}
 
-  &:nth-child(3n + 1) {
-    background-color: var(--clr-gray);
-  }
-
-  &:nth-child(3n + 2) {
-    background-color: var(--clr-major);
-  }
-  &:nth-child(3n) {
-    background-color: var(--clr-violet);
-  }
+.task-status-priority-container {
+  display: flex;
+  align-items: start;
+  gap: 0.25rem;
 }
 
 .upper-card {
@@ -31,9 +27,10 @@
   gap: 0.5rem;
   .card-title {
     p {
-      color: var(--text-light);
-      font-size: 1.15rem;
-      font-weight: 500;
+      color: var(--text-dark);
+      color: #393939;
+      font-size: 1rem;
+      font-weight: 600;
     }
   }
 }
@@ -44,68 +41,77 @@
   justify-content: space-between;
 
   .task-timeline {
-    color: var(--text-light);
+    color: #9b9b9b;
     display: flex;
     align-items: center;
     gap: 0.25rem;
 
     p {
-      font-size: 0.8rem;
-    }
-  }
-
-  .task-priority {
-    padding: 1rem 1.75rem;
-
-    border: 1px solid rgba(255, 255, 255, 0.168);
-    border-radius: 2rem;
-
-    color: var(--text-light);
-    background: rgba(255, 255, 255, 0.27);
-
-    font-size: 0.95rem;
-
-    backdrop-filter: blur(0.075rem);
-
-    &::first-letter {
-      text-transform: uppercase;
+      font-size: 0.7rem;
     }
   }
 }
 
-.task-status-message {
+.task-status-message,
+.task-priority {
+  background-color: #f3f3f3;
   margin: 0.25rem 0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
   p {
     font-size: 0.5rem;
     text-align: center;
-    letter-spacing: 0.075rem;
-    font-weight: 500;
-    color: var(--text-light);
+    font-weight: 600;
+    color: #555555;
+    text-transform: uppercase;
+  }
+}
+
+.task-priority.high {
+  background-color: #ffefee;
+  p {
+    color: #f16466;
+  }
+}
+
+.task-priority.Medium {
+  background-color: #fff7f0;
+  p {
+    color: #faa761;
+  }
+}
+
+.task-priority.Low {
+  background-color: #ebfcfa;
+  p {
+    color: #5ebeb4;
   }
 }
 
 .task-status-toggle {
   position: relative;
-  height: 3vh;
+  height: 2.5vh;
   aspect-ratio: 2 / 1;
   background-color: var(--clr-primary);
+  background-color: #bababa;
   border-radius: 4rem;
-  border: 1.5px solid var(--clr-main);
+  border: 1px solid #555555;
   box-shadow: inset 0rem 0rem 0.25rem rgba(0, 0, 0, 0.322);
 
   .task-toggle-slider {
     position: absolute;
     top: 50%;
-    left: 1.75%;
+    left: 5%;
     transform: translate(0%, -50%);
     height: 90%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     background-color: var(--clr-main);
+    background-color: #fff;
     transition: all 0.25s ease-in-out;
   }
 
   .task-toggle-slider.toggled {
-    transform: translate(122%, -50%);
+    transform: translate(110%, -50%);
   }
 }
