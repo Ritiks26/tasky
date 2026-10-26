@@ -21,7 +21,7 @@ export function QuickView({
             cx="5"
             cy="5"
             r="4"
-            fill="#F0F0F0"
+            fill="#fff"
             stroke="black"
             strokeWidth="2"
           />
@@ -33,7 +33,7 @@ export function QuickView({
           />
           <path
             d="M15 13C17.2091 13 19 14.7909 19 17C19 19.2091 17.2091 21 15 21C12.7909 21 11 19.2091 11 17C11 14.7909 12.7909 13 15 13Z"
-            fill="#F0F0F0"
+            fill="#fff"
             stroke="black"
             strokeWidth="2"
           />
