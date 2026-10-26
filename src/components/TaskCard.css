@@ -14,6 +14,14 @@
   background-color: var(--clr-main);
 }
 
+.day-tasks-card {
+  p {
+    font-weight: 500;
+    color: #555555;
+    margin-bottom: 1rem;
+  }
+}
+
 .task-status-priority-container {
   display: flex;
   align-items: start;

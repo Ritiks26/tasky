@@ -11,38 +11,13 @@ export function QuickView({
     <div className="quick-view">
       <div className="quick-view-filter">
         <svg
-          width="18"
-          height="18"
-          viewBox="0 0 20 22"
-          fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          width="25"
+          height="25"
+          fill="currentColor"
+          viewBox="0 0 16 16"
         >
-          <circle
-            cx="5"
-            cy="5"
-            r="4"
-            fill="#fff"
-            stroke="black"
-            strokeWidth="2"
-          />
-          <path
-            d="M5 10V21"
-            stroke="black"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
-          <path
-            d="M15 13C17.2091 13 19 14.7909 19 17C19 19.2091 17.2091 21 15 21C12.7909 21 11 19.2091 11 17C11 14.7909 12.7909 13 15 13Z"
-            fill="#fff"
-            stroke="black"
-            strokeWidth="2"
-          />
-          <path
-            d="M15 1V7V12"
-            stroke="black"
-            strokeWidth="2"
-            strokeLinecap="round"
-          />
+          <path d="M6 10.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5" />
         </svg>
       </div>
 

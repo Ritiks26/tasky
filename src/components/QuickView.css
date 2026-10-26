@@ -16,8 +16,8 @@
 }
 
 .quick-view-filter {
-  height: 90%;
-  aspect-ratio: 0.75 / 1;
+  height: 100%;
+  aspect-ratio: 1 / 1;
   border-radius: 2rem;
   background-color: var(--clr-main);
 

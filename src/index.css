@@ -9,7 +9,7 @@
 }
 
 :root {
-  --font-main: "satoshi", "inter";
+  --font-main: "PP Neue Montreal", "satoshi", "inter";
   --font-secondary: "barlow condensed";
   --font-general: "general sans";
 
@@ -31,5 +31,5 @@
 }
 
 body {
-  background-color: var(--body-bg);
+  background-color: whitesmoke;
 }

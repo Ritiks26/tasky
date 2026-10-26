@@ -59,25 +59,26 @@ export function CalendarDates({ fetchTodo, todos }) {
                 />
               </svg>
             </div>
-            {format(currentDate, "dd.MM.yyyy")}
+            {format(currentDate, "d MMMM yyyy")}
           </div>
           <div
             className="add-task-btn"
             onClick={() => setIsAddTaskOpen(!isAddTaskOpen)}
           >
             <svg
-              width="25"
-              height="25"
-              viewBox="0 0 12 17"
+              width="65%"
+              height="65%"
+              viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
             >
               <path
-                d="M1.07125 10.2095L6.75118 0.74291C6.88992 0.51168 7.18703 0.432121 7.42275 0.563079L11.036 2.57047C11.2877 2.71026 11.3696 3.03313 11.2151 3.27598L8 8.32822L5.08979 13.1786C5.03165 13.2755 4.9424 13.3498 4.8366 13.3895L1.67556 14.5749C1.34869 14.6975 1 14.4558 1 14.1067V10.4667C1 10.3761 1.02463 10.2872 1.07125 10.2095Z"
-                stroke="white"
+                d="M18 2L22 6M2 22L3.2764 17.3199C3.35968 17.0145 3.40131 16.8619 3.46523 16.7195C3.52199 16.5931 3.59172 16.4729 3.67332 16.3609C3.76521 16.2348 3.87711 16.1229 4.1009 15.8991L14.4343 5.56569C14.6323 5.36768 14.7313 5.26867 14.8455 5.23158C14.9459 5.19895 15.0541 5.19895 15.1545 5.23158C15.2687 5.26867 15.3677 5.36768 15.5657 5.56569L18.4343 8.43431C18.6323 8.63232 18.7313 8.73133 18.7684 8.84549C18.8011 8.94591 18.8011 9.05409 18.7684 9.15451C18.7313 9.26867 18.6323 9.36768 18.4343 9.56569L8.1009 19.8991C7.87711 20.1229 7.76521 20.2348 7.63908 20.3267C7.52709 20.4083 7.40692 20.478 7.28052 20.5348C7.13815 20.5987 6.98548 20.6403 6.68014 20.7236L2 22Z"
+                stroke="currentColor"
+                strokeWidth="1.5"
                 strokeLinecap="round"
+                strokeLinejoin="round"
               />
-              <path d="M0.5 16.3282H11" stroke="white" strokeLinecap="round" />
             </svg>
           </div>
         </div>
@@ -107,11 +108,17 @@ export function CalendarDates({ fetchTodo, todos }) {
         />
 
         <div className="day-tasks-card">
-          <h1>{format(activeDate, "dd MMM")}</h1>
+          <p>Task schedule for {format(activeDate, "dd MMM")}</p>
 
           {dayTodos.length === 0 && (
-            <p style={{ color: "#959595", marginTop: "1rem" }}>
-              No schedule task for this day!
+            <p
+              style={{
+                color: "#959595",
+                marginTop: "4rem",
+                marginInline: "auto",
+              }}
+            >
+              No task schedule!
             </p>
           )}
 

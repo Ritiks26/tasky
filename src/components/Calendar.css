@@ -1,31 +1,38 @@
 .calendar-section {
   width: 100%;
-  margin-top: 1rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+
+  background-color: var(--clr-main);
 }
 
 .current-heading-date {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--clr-primary);
   padding: 0.25rem;
   border-radius: 4rem;
 
   .current-month-year {
-    font-weight: 500;
+    font-weight: 600;
+    color: #393939;
   }
 
-  .prev-month,
-  .next-month {
-    height: 100%;
-    aspect-ratio: 1 / 1;
-    padding: 0.75rem;
-    border-radius: 50%;
-    background-color: var(--clr-main);
-
+  .change-month {
     display: flex;
     align-items: center;
-    justify-content: center;
+    gap: 1rem;
+
+    .prev-month,
+    .next-month {
+      height: 100%;
+      aspect-ratio: 1 / 1;
+      padding: 0.75rem;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }
 
@@ -37,7 +44,7 @@
   margin-top: 1rem;
 
   p {
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 
@@ -46,20 +53,24 @@
   display: grid;
   grid-template-columns: repeat(7, minmax(0, 1fr));
   gap: 0.25rem;
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 
   .dates-new {
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1.3;
     background-color: var(--clr-primary);
-    border-radius: 50%;
-    margin: 0.25rem 0;
-
+    border-radius: 0.5rem;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: end;
+    justify-content: start;
+    padding: 0.5rem;
+    font-weight: 500;
 
-    font-weight: 600;
+    p {
+      position: relative;
+      z-index: 1;
+      color: var(--clr-light-dark);
+    }
   }
 
   .dates-new.empty {
@@ -75,17 +86,7 @@
 
 .dates-new.active {
   position: relative;
+  z-index: 1;
+  background-color: var(--clr-light-dark);
   color: #fff;
-  border-radius: 50%;
-  background-color: #00000084;
-  font-size: 0.8rem;
-
-  &::before {
-    content: "";
-    position: absolute;
-    inset: 0.5rem;
-    background: #000;
-    border-radius: inherit;
-    z-index: -1;
-  }
 }
