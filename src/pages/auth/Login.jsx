@@ -31,6 +31,7 @@ export function Login({ fetchTodo }) {
       );
       console.log("login done", res.data);
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
       await fetchTodo();
       navigation("/");
     } catch (err) {

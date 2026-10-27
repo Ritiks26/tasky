@@ -1,13 +1,12 @@
 header {
   height: 10dvh;
   width: 100%;
-  padding: 0 1rem;
+  padding: 0rem 1rem;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: rgba(255, 255, 255, 0.298);
-  backdrop-filter: blur(0.25rem);
+  background-color: whitesmoke;
   z-index: 99;
   font-family: var(--font-main);
 
@@ -19,12 +18,21 @@ header {
 .user-profile,
 .right-section-header {
   height: 100%;
-  width: 50%;
+  width: 100%;
   display: flex;
   align-items: center;
+  gap: 0.5rem;
+
+  .header-user-name {
+    p {
+      font-weight: 500;
+      color: #393939;
+    }
+  }
 }
 
 .right-section-header {
+  width: fit-content;
   justify-content: end;
 }
 
@@ -40,7 +48,6 @@ header {
   gap: 0.75rem;
 }
 
-.add-tasks,
 .notification-section {
   height: 70%;
   aspect-ratio: 1 / 1;

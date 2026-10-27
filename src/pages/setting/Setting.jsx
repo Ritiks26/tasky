@@ -97,9 +97,11 @@ const setting = [
 
 export function Setting() {
   const navigate = useNavigate();
+  const savedUser = JSON.parse(localStorage.getItem("user"));
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     navigate("/login");
   };
   return (
@@ -115,7 +117,7 @@ export function Setting() {
           </div>
           <div className="user-detail">
             <div className="user-name">
-              <p>Ritik Singh</p>
+              <p>{savedUser?.name || "user"}</p>
             </div>
             <div className="edit-profile">
               <p>Edit profile</p>
