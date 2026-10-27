@@ -121,7 +121,11 @@ function App() {
               path="/calendar"
               element={
                 <ProtectedRoute>
-                  <CalendarDates fetchTodo={fetchTodo} todos={todos} />
+                  <CalendarDates
+                    fetchTodo={fetchTodo}
+                    todos={todos}
+                    onToggleStatus={handleToggleStatus}
+                  />
                 </ProtectedRoute>
               }
             />
