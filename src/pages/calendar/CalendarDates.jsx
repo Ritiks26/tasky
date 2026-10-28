@@ -109,7 +109,9 @@ export function CalendarDates({ fetchTodo, todos, onToggleStatus }) {
         />
 
         <div className="day-tasks-card">
-          <p>Task schedule for {format(activeDate, "dd MMM")}</p>
+          <p style={{ marginBottom: "0.5rem" }}>
+            Task schedule for {format(activeDate, "dd MMM")}
+          </p>
 
           {dayTodos.length === 0 && (
             <p

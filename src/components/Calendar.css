@@ -39,12 +39,13 @@
 .weekdays-new {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  justify-items: center;
+  gap: 0.5rem;
+  justify-items: start;
 
   margin-top: 1rem;
 
   p {
-    font-weight: 500;
+    font-weight: 400;
   }
 }
 
