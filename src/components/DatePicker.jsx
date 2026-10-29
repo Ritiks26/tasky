@@ -1,4 +1,5 @@
 import {
+  startOfDay,
   startOfMonth,
   endOfMonth,
   startOfWeek,
@@ -9,6 +10,7 @@ import {
   isSameDay,
   addMonths,
   subMonths,
+  isBefore,
 } from "date-fns";
 import { useState } from "react";
 import { motion } from "motion/react";
@@ -21,6 +23,7 @@ export function DatePicker({
   setSelectedDate,
 }) {
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const today = startOfDay(new Date());
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(currentMonth);
 
@@ -104,11 +107,12 @@ export function DatePicker({
           {days.map((day) => {
             const isCurrentMonth = isSameMonth(day, currentMonth);
             const isSelected = selectedDate && isSameDay(selectedDate, day);
+            const isPastDate = isBefore(day, today);
             return (
               <div
                 key={day}
                 onClick={() => setSelectedDate(day)}
-                className={`dates-each ${!isCurrentMonth ? "empty" : ""} ${isSelected ? "active" : ""}`}
+                className={`dates-each ${!isCurrentMonth ? "empty" : ""} ${isSelected ? "active" : ""} ${isPastDate ? "past-date" : ""}`}
               >
                 {isCurrentMonth ? format(day, "d") : ""}
               </div>
