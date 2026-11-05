@@ -33,7 +33,10 @@
   width: 95%;
   padding: 0.25rem 1rem;
 
-  background-color: var(--clr-main);
+  /* background-color: var(--clr-main); */
+  background-color: var(--glass-effect);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: blur(1rem);
   box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.116);
   border-radius: 0.75rem;
 
@@ -45,9 +48,10 @@
 
   p {
     font-size: 1.15rem;
+    color: var(--text-light);
 
     &:nth-child(2) {
-      color: #2378e9;
+      color: var(--text-gray);
     }
   }
 }

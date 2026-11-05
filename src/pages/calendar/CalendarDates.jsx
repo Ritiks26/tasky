@@ -37,30 +37,30 @@ export function CalendarDates({ fetchTodo, todos, onToggleStatus }) {
               >
                 <path
                   d="M1 22V8C1 5.79086 2.79086 4 5 4H20C22.2091 4 24 5.79086 24 8V22C24 24.2091 22.2091 26 20 26H12.5H5C2.79086 26 1 24.2091 1 22Z"
-                  stroke="black"
+                  stroke="white"
                   strokeWidth="2"
                   strokeLinecap="round"
                 />
                 <path
                   d="M6 3.5V1"
-                  stroke="black"
+                  stroke="white"
                   strokeWidth="2"
                   strokeLinecap="round"
                 />
                 <path
                   d="M18 3V1"
-                  stroke="black"
+                  stroke="white"
                   strokeWidth="2"
                   strokeLinecap="round"
                 />
                 <path
                   d="M8 16.25C9.79493 16.25 11.25 17.7051 11.25 19.5C11.25 21.2949 9.79493 22.75 8 22.75C6.20507 22.75 4.75 21.2949 4.75 19.5C4.75 17.7051 6.20507 16.25 8 16.25ZM17 16.25C18.7949 16.25 20.25 17.7051 20.25 19.5C20.25 21.2949 18.7949 22.75 17 22.75C15.2051 22.75 13.75 21.2949 13.75 19.5C13.75 17.7051 15.2051 16.25 17 16.25ZM8 7.75C9.79493 7.75 11.25 9.20507 11.25 11C11.25 12.7949 9.79493 14.25 8 14.25C6.20507 14.25 4.75 12.7949 4.75 11C4.75 9.20507 6.20507 7.75 8 7.75ZM17 7.75C18.7949 7.75 20.25 9.20507 20.25 11C20.25 12.7949 18.7949 14.25 17 14.25C15.2051 14.25 13.75 12.7949 13.75 11C13.75 9.20507 15.2051 7.75 17 7.75Z"
-                  stroke="black"
+                  stroke="white"
                   strokeWidth="1.5"
                 />
               </svg>
             </div>
-            {format(currentDate, "d MMMM yyyy")}
+            <p> {format(currentDate, "EEE, dd MMMM, yyy ")}</p>
           </div>
           <div
             className="add-task-btn"
@@ -75,7 +75,7 @@ export function CalendarDates({ fetchTodo, todos, onToggleStatus }) {
             >
               <path
                 d="M18 2L22 6M2 22L3.2764 17.3199C3.35968 17.0145 3.40131 16.8619 3.46523 16.7195C3.52199 16.5931 3.59172 16.4729 3.67332 16.3609C3.76521 16.2348 3.87711 16.1229 4.1009 15.8991L14.4343 5.56569C14.6323 5.36768 14.7313 5.26867 14.8455 5.23158C14.9459 5.19895 15.0541 5.19895 15.1545 5.23158C15.2687 5.26867 15.3677 5.36768 15.5657 5.56569L18.4343 8.43431C18.6323 8.63232 18.7313 8.73133 18.7684 8.84549C18.8011 8.94591 18.8011 9.05409 18.7684 9.15451C18.7313 9.26867 18.6323 9.36768 18.4343 9.56569L8.1009 19.8991C7.87711 20.1229 7.76521 20.2348 7.63908 20.3267C7.52709 20.4083 7.40692 20.478 7.28052 20.5348C7.13815 20.5987 6.98548 20.6403 6.68014 20.7236L2 22Z"
-                stroke="currentColor"
+                stroke="white"
                 strokeWidth="1.5"
                 strokeLinecap="round"
                 strokeLinejoin="round"
@@ -109,7 +109,7 @@ export function CalendarDates({ fetchTodo, todos, onToggleStatus }) {
         />
 
         <div className="day-tasks-card">
-          <p style={{ marginBottom: "0.5rem" }}>
+          <p style={{ marginBottom: "0.5rem", color: "var(--text-light)" }}>
             Task schedule for {format(activeDate, "dd MMM")}
           </p>
 

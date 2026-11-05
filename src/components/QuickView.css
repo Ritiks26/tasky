@@ -19,7 +19,9 @@
   height: 100%;
   aspect-ratio: 1 / 1;
   border-radius: 2rem;
-  background-color: var(--clr-main);
+  /* background-color: var(--clr-main); */
+  background-color: var(--glass-effect);
+  border: 1px solid var(--glass-border);
 
   display: flex;
   align-items: center;

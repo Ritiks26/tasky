@@ -1,18 +1,30 @@
 .home-container {
-  height: 100dvh;
+  height: 100vh;
   width: 100%;
   padding: 0.5rem;
   margin-top: 5.5rem;
 
   font-family: var(--font-main);
+}
+
+.home-section {
+  margin-top: 30%;
+}
+
+.greet-and-date-section {
+  color: var(--text-light);
   h1 {
-    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  p {
+    color: var(--text-gray);
   }
 }
 
-.quick-task-view {
+/* .quick-task-view {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 0.5rem;
   margin: 1rem 0;
-}
+} */

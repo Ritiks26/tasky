@@ -52,7 +52,7 @@
   right: 0.25em;
   height: 20%;
   aspect-ratio: 1 / 1;
-  background-color: var(--clr-major);
+  background-image: linear-gradient(90deg, #3a6d43, #91bb99);
   z-index: 99;
   border-radius: 50%;
 }

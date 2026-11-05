@@ -50,7 +50,7 @@ export function Calendar({ activeDate, setActiveDate }) {
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
-              fill="currentColor"
+              fill="#fff"
               className="bi bi-chevron-left"
               viewBox="0 0 16 16"
             >
@@ -65,7 +65,7 @@ export function Calendar({ activeDate, setActiveDate }) {
               xmlns="http://www.w3.org/2000/svg"
               width="20"
               height="20"
-              fill="currentColor"
+              fill="#fff"
               className="bi bi-chevron-right"
               viewBox="0 0 16 16"
             >
