@@ -16,7 +16,7 @@
   margin: 0.25rem 0;
   padding: 0.5rem;
   height: calc(6vh + 1rem);
-  width: 100%;
+  /* width: 100%; */
   border-radius: 0.5rem;
   background-color: var(--glass-effect);
   border: 1px solid var(--glass-border);
@@ -56,13 +56,13 @@
       background-color: var(--clr-primary);
     }
   }
+}
 
-  .add-task-btn {
-    height: 90%;
-    aspect-ratio: 1 / 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-  }
+.add-task-btn {
+  height: 90%;
+  aspect-ratio: 1 / 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
 }
