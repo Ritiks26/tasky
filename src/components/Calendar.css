@@ -41,7 +41,7 @@
 
   .manage-task {
     display: flex;
-    align-items: center;
+    align-items: end;
     justify-content: space-between;
     width: 100%;
 
@@ -55,10 +55,10 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    padding: 0.25rem 0.75rem;
+    padding: 0.5rem 1rem;
     width: fit-content;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 1rem;
+    border-radius: 2rem;
 
     p {
       font-size: 1.05rem;
