@@ -32,7 +32,7 @@
 }
 
 body {
-  min-height: 100dvh;
+  min-height: 100vh;
   background: transparent;
 }
 
@@ -40,12 +40,7 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-
-  background-image: url("./pics/gradient.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-
+  background: url("./pics/gradient.avif") center / cover no-repeat;
   z-index: -1;
   pointer-events: none;
 }
