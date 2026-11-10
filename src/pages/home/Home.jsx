@@ -14,9 +14,8 @@ const getGreeting = (hours) => {
 };
 
 export function Home() {
-  useState(startOfDay(new Date()));
   const currentDate = new Date();
-  const greeting = getGreeting(currentDate.getHours);
+  const greeting = getGreeting(currentDate.getHours());
 
   const savedUser = JSON.parse(localStorage.getItem("user"));
   const firstName = savedUser?.name?.split(" ")[0] || "There";
